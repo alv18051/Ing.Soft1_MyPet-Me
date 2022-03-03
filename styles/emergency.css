@@ -1,0 +1,52 @@
+/****************************************************************************************
+    Universidad del Valle de Guatemala
+    Departamento de Ciencias de la Computación
+    Ingeniería de Software 1 - Sección 10
+    
+    Me Pet & Me
+
+    ! emergency : Estilos para la página de emergencia
+
+    Integrantes:
+    Cristian Laynez 
+    Elean Rivas
+    Sara Paguaga
+    Diego Ruiz
+    Javier Alvarez
+/****************************************************************************************/
+
+body {
+    background: #E5E5E5;
+    /* Más adelante tratar de implementar el fuente de "Rubik" */
+    font-family: Arial; 
+}
+
+.emergency {    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+h1 {
+    position: relative;
+    margin: 5%;    
+}
+
+button {
+    position: relative;
+    background: #1572A1;
+    color: white;
+    border: none;
+    display: inline-block;
+    width: 15%;
+    min-width: 15%;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    background: grey;
+}

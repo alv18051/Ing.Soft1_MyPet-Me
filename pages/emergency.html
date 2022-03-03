@@ -1,12 +1,37 @@
+<!-- #######################################################################################
+    Universidad del Valle de Guatemala
+    Departamento de Ciencias de la Computación
+    Ingeniería de Software 1 - Sección 10
+    
+    Me Pet & Me
+
+    ! index
+    
+    Integrantes:
+    Cristian Laynez
+    Elean Rivas
+    Sara Paguaga
+    Diego Ruiz
+    Javier Alvarez
+####################################################################################### -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/emergency.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency</title>
 </head>
 <body>
-    
+    <div class="emergency">
+        <h1>Veterinarias más cercanas</h1>
+        <button>Llamar ambulancia</button>
+    </div>
+    <div id="map">
+        <script src="../js/map.js"></script>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=LA_LLAVE&callback=startMap"></script>
+    </div>
 </body>
 </html>
