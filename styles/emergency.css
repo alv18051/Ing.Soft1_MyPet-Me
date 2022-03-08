@@ -19,6 +19,21 @@ body {
     background: #E5E5E5;
     /* Más adelante tratar de implementar el fuente de "Rubik" */
     font-family: Arial; 
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    margin: 10px;
+}
+
+#selected {
+    background: white;
+    height: 125px;
+    border: 5px solid #1572A1;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .emergency {    
@@ -32,21 +47,35 @@ h1 {
     margin: 5%;    
 }
 
+h3 {
+    text-align: center;
+    margin: 10px;
+}
+
 button {
     position: relative;
     background: #1572A1;
     color: white;
     border: none;
     display: inline-block;
-    width: 15%;
-    min-width: 15%;
+    width: 200px;
+    min-width: 200px;    
     height: 50px;
     border-radius: 5px;
     font-size: 17px;
 }
 
+.btn-from-vet {
+    color: black;
+    font-weight: bold;    
+    background: #cddeff;
+    margin: 5px;    
+    width: 150px;
+}
+
 #map {
-    height: 400px;
-    width: 100%;
+    height: 500px;
+    flex-grow: 1;
+    max-height: 100%;    
     background: grey;
 }

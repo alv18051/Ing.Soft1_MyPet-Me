@@ -26,15 +26,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency</title>
 </head>
-<body>
+<body>    
     <div class="emergency">
         <h1>Veterinarias más cercanas</h1>
         <button>Llamar ambulancia</button>
     </div>
-    <div id="map">
-        <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:999;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
+    <div class="content">
+        <div id="selected"></div>
+        <div class="all-map">
+            <div id="map">
+                <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:999;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
+            </div>
+            <p><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a></p>
+            <script src="../js/map.js"></script>
+        </div>
     </div>
-    <p><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a></p>
-    <script src="../js/map.js"></script>
 </body>
 </html>

@@ -14,21 +14,65 @@ let testjson = {
   'places' : [
     {
       'name' : 'UVG',
-      'coordinates' : [14.6050635,-90.4893286]
+      'long' : 14.6050635,
+      'lat' : -90.4893286,
+      'direccion' : 'Zona 16',
+      'veterinario' : 'Pedrito'
+
     },
     {
       'name' : 'Pool',
-      'coordinates' : [14.60497999,-90.49281568]
+      'long' : 14.60497999,
+      'lat' : -90.49281568,
+      'direccion' : 'Zona 16',
+      'veterinario' : 'Juanito UwU'
+
     }
   ]
 }
 
+// Detectar el div selected
+const selectedVet = document.getElementById('selected');
+const information = document.createElement('h3');
+information.append("Porfavor selecciona una veterinaria :)")
+selectedVet.appendChild(information);
+
 // Por medio de este ciclo forEach se podrá agregar y mostrar la info de la veterinaria jeje
-testjson['places'].forEach(element => {
-  let long = element['coordinates'][0]
-  let lat = element['coordinates'][1]
-  let marker = L.marker([long, lat]).addTo(map);
+testjson['places'].forEach(element => {  
+  // Impelentar marcador
+  let marker = L.marker([element['long'], element['lat']]).addTo(map);
+  // Implementar event listener al marcador
   marker.addEventListener("click", function() {
-    alert(element['name'])
+    document.querySelector('h3').remove()        
+    
+    try {
+      // eliminar botones si los hay
+      selectedVet.querySelector('button').remove()
+      selectedVet.querySelector('button').remove()
+    } catch (error) {
+      // console.log("Modo hacks activado" + error)
+    }
+    
+    // Implementar los titulos
+    const theVet = document.createElement('h3')
+    theVet.append(element['name'])
+    theVet.append(document.createElement('br'))
+    theVet.append("Veterinario: " + element['veterinario'])
+    
+    // Implementar botones
+    const callVet = document.createElement('button')
+    callVet.className = 'btn-from-vet'
+    callVet.append('Llamar a ' + element['name'])    
+    
+    const moreInfo = document.createElement('button')
+    moreInfo.className = 'btn-from-vet'  
+    moreInfo.append('Más información')  
+    
+    selectedVet.appendChild(theVet)
+    selectedVet.appendChild(callVet)
+    selectedVet.appendChild(moreInfo)
+    
   })
 });
+
+// Controlar el div
