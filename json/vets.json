@@ -1,32 +1,37 @@
 {
-    "1" : {
-        "Nombre" : "Vet 1",
-        "Lat" : 50,
-        "Long" : 50,
-        "Direccion" : "Direccion Prueba",
-        "Rating" : 0,
-        "Horarios" : "",
-        "Veterinarios" : [],
-        "Comentarios" : []
-    },
-    "2" : {
-        "Nombre" : "Vet 2",
-        "Lat" : 0,
-        "Long" : 0,
-        "Direccion" : "",
-        "Rating" : 0,
-        "Horarios" : "",
-        "Veterinarios" : [],
-        "Comentarios" : []
-    },
-    "3" : {
-        "Nombre" : "Vet 3",
-        "Lat" : 0,
-        "Long" : 0,
-        "Direccion" : "",
-        "Rating" : 0,
-        "Horarios" : "",
-        "Veterinarios" : [],
-        "Comentarios" : []
-    }
+    "places" : [
+        {
+            "id" : "1",
+            "name" : "UVG Vet",
+            "long" : 14.6050635,
+            "lat" : -90.4893286,
+            "direccion" : "Zona 16",
+            "veterinario" : "Pedrito",
+            "rating" : 0,
+            "horarios" : [],
+            "comentatarios" : []
+        },
+        {
+            "id" : "2",
+            "name" : "Pool",
+            "long" : 14.60497999,
+            "lat" : -90.49281568,
+            "direccion" : "Zona 16",
+            "veterinario" : "Juanito",
+            "rating" : 0,
+            "horarios" : [],
+            "comentatarios" : []
+        },
+        {
+            "id" : "3",
+            "name" : "Vet 3",
+            "long" : 14.70497999,
+            "lat" : -90.69281568,
+            "direccion" : "Zona 16",
+            "veterinario" : "Pancho",
+            "rating" : 0,
+            "horarios" : [],
+            "comentatarios" : []
+        }
+    ]
 }

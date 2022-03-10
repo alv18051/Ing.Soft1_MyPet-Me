@@ -18,7 +18,6 @@ let testjson = {
       'lat' : -90.4893286,
       'direccion' : 'Zona 16',
       'veterinario' : 'Pedrito'
-
     },
     {
       'name' : 'Pool',
@@ -26,7 +25,6 @@ let testjson = {
       'lat' : -90.49281568,
       'direccion' : 'Zona 16',
       'veterinario' : 'Juanito UwU'
-
     }
   ]
 }
@@ -36,6 +34,8 @@ const selectedVet = document.getElementById('selected');
 const information = document.createElement('h3');
 information.append("Porfavor selecciona una veterinaria :)")
 selectedVet.appendChild(information);
+
+// console.log(testjson);
 
 // Por medio de este ciclo forEach se podrá agregar y mostrar la info de la veterinaria jeje
 testjson['places'].forEach(element => {  
