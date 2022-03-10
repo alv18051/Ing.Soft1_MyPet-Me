@@ -1,29 +1,107 @@
-<!-- #######################################################################################
-    Universidad del Valle de Guatemala
-    Departamento de Ciencias de la Computación
-    Ingeniería de Software 1 - Sección 10
-    
-    Me Pet & Me
-
-    ! index
-    
-    Integrantes:
-    Cristian Laynez
-    Elean Rivas
-    Sara Paguaga
-    Diego Ruiz
-    Javier Alvarez
-####################################################################################### -->
-
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Pet & Me</title>
+  <meta charset="UTF-8">
+  <title>Busqueda</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
+
 <body>
-    
+  <main id="main-holder">
+    <div id="mainPage-holder">
+      <a href=main.html><b>MY PET & ME</b></a>
+    </div>
+
+    <div id="filtros-holder">
+      <button type="button" class="collapsible">Cercanía</button>
+        <div class="content">
+          <label><input type="checkbox" id="cbox1" value="first_checkbox"> Menos de 1km</label><br>
+          <label><input type="checkbox" id="cbox2" value="second_checkbox"> Menos de 2km</label><br>
+          <label><input type="checkbox" id="cbox3" value="third_checkbox"> Menos de 5km</label><br>
+          <label><input type="checkbox" id="cbox4" value="fouth_checkbox"> Menos de 10km</label><br>
+        </div>
+
+
+
+      <button type="button" class="collapsible">Especialidades</button>
+        <div class="content">
+          <label><input type="checkbox" id="cbox1" value="first_checkbox"> Perros</label><br>
+          <label><input type="checkbox" id="cbox2" value="second_checkbox"> Gatos</label><br>
+          <label><input type="checkbox" id="cbox3" value="third_checkbox"> Peces</label><br>
+          <label><input type="checkbox" id="cbox4" value="fouth_checkbox"> Exoticos</label><br>
+        </div>
+
+      <button type="button" class="collapsible">Precio</button>
+        <div class="content">
+          <label><input type="checkbox" id="cbox1" value="first_checkbox"> Menos de Q1,000</label><br>
+          <label><input type="checkbox" id="cbox2" value="second_checkbox"> Entre Q1,000 y Q1,999</label><br>
+          <label><input type="checkbox" id="cbox3" value="third_checkbox"> Entre Q2,000 y Q2,999</label><br>
+          <label><input type="checkbox" id="cbox4" value="fouth_checkbox"> Entre Q3,000 y Q3,999</label><br>
+          <label><input type="checkbox" id="cbox5" value="fifth_checkbox"> Mas de Q4,000</label><br>
+        </div>
+
+      <button type="button" class="collapsible">Ranking</button>
+        <div class="content">
+          <label><input type="checkbox" id="cbox1" value="first_checkbox"> Al menos 1 estrella</label><br>
+          <label><input type="checkbox" id="cbox2" value="second_checkbox"> Al menos 2 estrellas</label><br>
+          <label><input type="checkbox" id="cbox3" value="third_checkbox"> Al menos 3 estrellas</label><br>
+          <label><input type="checkbox" id="cbox4" value="fouth_checkbox"> Al menos 4 estrellas</label><br>
+          <label><input type="checkbox" id="cbox5" value="fifth_checkbox"> Unicamente 5 estrellas</label><br>
+        </div>
+
+      <button type="button" class="collapsible">Cantidad de veterinarios</button>
+        <div class="content">
+          <label><input type="checkbox" id="cbox1" value="first_checkbox"> Unicamente 1 veterinario</label><br>
+          <label><input type="checkbox" id="cbox2" value="second_checkbox"> Al menos 2 veterinarios</label><br>
+          <label><input type="checkbox" id="cbox3" value="third_checkbox"> Al menos 5 veterinarios</label><br>
+          <label><input type="checkbox" id="cbox4" value="fouth_checkbox"> Mas de 10 veterinarios</label><br>
+        </div>
+
+        <form class="busquedaFiltros">
+          <button>Aplicar Filtros</button>
+        </form>
+      
+
+    </div>
+
+    <div id="titleandsearch-holder">
+      <h1 id="Bheader">Busqueda de veterinarias</h1>
+        <form class="example">
+          <input type="text" name="search">
+          <button type="submit"></button>
+        </form>
+    </div>
+
+    <div id="content-holder">
+      <div id="content-one">
+        <img src="vet.jpg" width="165" height="145"><br>
+        <a href=elrejo.html id="v1" style="color:black;font-size:14px;"><b>Veterinaria El Rejo</b></a>
+      </div>
+
+      <div id="content-two">
+        <img src="vet.jpg" width="165" height="145"><br>
+        <a href=lapaz.html id="v1" style="color:black;font-size:14px;"><b>Veterinaria La Paz</b></a>
+      </div>
+
+      <div id="content-three">
+        <img src="vet.jpg" width="165" height="145"><br>
+        <a href=cemivet.html id="v1" style="color:black;font-size:14px;"><b>CEMIVET</b></a>
+      </div>
+
+      <div id="content-four">
+        <img src="vet.jpg" width="165" height="145"><br>
+        <a href=vetinsa.html id="v1" style="color:black;font-size:14px;"><b>VETINSA</b></a>
+      </div>
+
+      <div id="content-five">
+        <img src="vet.jpg" width="165" height="145"><br>
+        <a href=elpastor.html id="v1" style="color:black;font-size:14px;"><b>Veterinaria El Pastor</b></a>
+      </div>
+
+    </div>
+
+
+  </main>
 </body>
+
 </html>
