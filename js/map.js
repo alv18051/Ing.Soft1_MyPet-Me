@@ -47,10 +47,11 @@ testjson['places'].forEach(element => {
     
     try {
       // eliminar botones si los hay
+      selectedVet.querySelector('form').remove()
       selectedVet.querySelector('button').remove()
       selectedVet.querySelector('button').remove()
     } catch (error) {
-      // console.log("Modo hacks activado" + error)
+      
     }
     
     // Implementar los titulos
@@ -64,13 +65,18 @@ testjson['places'].forEach(element => {
     callVet.className = 'btn-from-vet'
     callVet.append('Llamar a ' + element['name'])    
     
+    const theForm = document.createElement('form')
+    theForm.action = '../pages/popup.html'
+    
     const moreInfo = document.createElement('button')
     moreInfo.className = 'btn-from-vet'  
-    moreInfo.append('Más información')  
+    moreInfo.append('Más información')    
+    
+    theForm.appendChild(moreInfo)
     
     selectedVet.appendChild(theVet)
     selectedVet.appendChild(callVet)
-    selectedVet.appendChild(moreInfo)
+    selectedVet.appendChild(theForm)
     
   })
 });
