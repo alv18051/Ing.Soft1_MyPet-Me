@@ -32,7 +32,7 @@ let testjson = {
 // Detectar el div selected
 const selectedVet = document.getElementById('selected');
 const information = document.createElement('h3');
-information.append("Porfavor selecciona una veterinaria :)")
+information.append("Por favor selecciona una veterinaria :)")
 selectedVet.appendChild(information);
 
 // console.log(testjson);
