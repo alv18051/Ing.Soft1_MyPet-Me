@@ -29,7 +29,7 @@ const InputComponent = ({ fun, title, message }) => {
 
   return (
     <div className='outerContainer2'>
-      <FormLabel color={'rgb(174 213 142)'}>{title}</FormLabel>
+      <FormLabel >{title}</FormLabel>
       <Input onChange={handleChange} focusBorderColor={colors.verde} placeholder={message} />
     </div>
   )

@@ -15,13 +15,13 @@ const Login = () => {
                     </div>
                     <InputComponent title='Correo'  message='Ingresa tu correo' />
                     <InputComponent title='Contraseña'  message='Ingresa tu contraseña' />
-                    <p className='questionCont'>¿No tienes cuenta? <a href='#'><b>¡Registrate!</b></a></p>
+                    <p className='questionCont'>¿No tienes cuenta? <a href='#'><b className='highlight'>¡Registrate!</b></a></p>
                 </div>
                 <div className='innerContainer'>
                         <Button
-                            backgroundColor='#97db75'
-                            _hover='rgb(174 213 142)'
-                            _active={{bg:'rgb(174 213 142)', borderColor:'rgb(174, 213, 142)'}}
+                            backgroundColor='#ea9a64'
+                            _hover='#ea9a64'
+                            _active={{bg:'#ea9a64', borderColor:'#ea9a64'}}
                             color='#fff'
                             width='100%'
                             marginTop='10px'   

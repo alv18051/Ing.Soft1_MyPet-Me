@@ -19,11 +19,11 @@ const Register = () => {
                     <InputComponent title='Correo'  message='Ingresa tu correo' />
                     <InputComponent title='Contraseña'  message='Ingresa tu contraseña' />
                     <InputComponent title='Cofirmar contraseña' message='Confirma tu contraseña' />
-                    <p>¿Ya tienes cuenta? <a href='#'>Iniciar sesión</a></p>
+                    <p className='questionCont'>¿Ya tienes cuenta? <a href='#'> <b className='highlight'>Iniciar sesión</b></a></p>
                 </div>
                 <div className='innerContainer'>
                         <Button
-                            backgroundColor='#97db75'
+                            backgroundColor='#ea9a64'
                             _hover='rgb(174 213 142)'
                             _active={{bg:'rgb(174 213 142)', borderColor:'rgb(174, 213, 142)'}}
                             color='#fff'
