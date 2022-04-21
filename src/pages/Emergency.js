@@ -16,10 +16,19 @@
 
  import React from "react";
 
- function Emergency() {
+ function Emergency({setCurrentPage}) {
+
+    const returnToMain = () => {
+      setCurrentPage("#main")
+      window.history.pushState({}, '', '/main')
+    }
+
      return (
        <div>
-         <h1>Emergency</h1>
+          <button onClick={returnToMain}>← Regresar</button>
+          <h1>Emergency</h1>
+          <h1>Veterinarias más cercanas</h1>
+          <button>Llamar ambulancia</button>
        </div>
      );
    }

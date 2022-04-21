@@ -16,7 +16,7 @@
 
  import React from "react";
 
- function Search() {
+ function Search({onCurrentPage}) {
      return (
        <div>
          <h1>Search</h1>

@@ -16,7 +16,7 @@
 
  import React from "react";
 
- function Popup() {
+ function Popup({onCurrentPage}) {
      return (
        <div>
          <h1>The Vet -zzz-</h1>

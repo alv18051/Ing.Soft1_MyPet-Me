@@ -16,7 +16,7 @@
 
  import React from "react";
 
- function VetView() {
+ function VetView({onCurrentPage}) {
      return (
        <div>
          <h1>Vetview</h1>

@@ -16,10 +16,20 @@
 
 import React from "react";
 
-function Main() {
+function Main({setCurrentPage}) {
+
+    const changeToEmergency = () => {
+      setCurrentPage("#emergency")
+      window.history.pushState({}, '', '/emergency')
+    }
+  
     return (
       <div>
         <h1>My Pet And Me</h1>
+        <div>
+          {/* <a onClick={changeToEmergency} class="emBtn">Emergencia</a> */}
+          <a onClick={changeToEmergency} class="emBtn">Emergencia</a>
+        </div>
       </div>
     );
   }
