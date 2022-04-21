@@ -28,6 +28,7 @@ import Login from "./pages/Login";
 import Popup from "./pages/Popup";
 import Search from "./pages/Search";
 import VetView from "./pages/Vetview";
+import Register from "./pages/Register"
 // ---------------------------------------------------------------------------------------
  
 function App() {
@@ -87,6 +88,14 @@ function App() {
   if(currentPage === '#vetview'){
     return (
       <VetView
+        setCurrentPage={setCurrentPage}
+      />
+      )
+    }
+
+  if(currentPage === '#register'){
+    return (
+      <Register
         setCurrentPage={setCurrentPage}
       />
       )

@@ -22,6 +22,11 @@ function Main({setCurrentPage}) {
       setCurrentPage("#emergency")
       window.history.pushState({}, '', '/emergency')
     }
+
+    const changeToRegister = () => {
+      setCurrentPage("#register")
+      window.history.pushState({}, '', '/emergency')
+    }
   
     return (
       <div>
@@ -29,6 +34,10 @@ function Main({setCurrentPage}) {
         <div>
           {/* <a onClick={changeToEmergency} class="emBtn">Emergencia</a> */}
           <a onClick={changeToEmergency} class="emBtn">Emergencia</a>
+          <br></br>
+          <br></br>
+          <a onClick={changeToRegister} class="emBtn">Registro</a>
+
         </div>
       </div>
     );
