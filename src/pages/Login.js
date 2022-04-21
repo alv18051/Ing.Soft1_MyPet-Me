@@ -16,7 +16,7 @@
 
  import React from "react";
 
- function Login() {
+ function Login({onCurrentPage}) {
      return (
        <div>
          <h1>Iniciar Sesión</h1>

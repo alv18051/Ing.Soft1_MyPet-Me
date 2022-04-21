@@ -41,42 +41,54 @@ function App() {
   // -> Página Principal ----------------------------------------------------------------
   if(currentPage === '#main'){
     return (
-      <Main/>
+      <Main
+        setCurrentPage={setCurrentPage}
+      />
     )
   }
 
   // -> Página Principal ----------------------------------------------------------------
   if(currentPage === '#emergency'){
     return (
-      <Emergency/>
+      <Emergency
+        setCurrentPage={setCurrentPage}
+      />
     )
   }
 
   // -> Página Principal ----------------------------------------------------------------
   if(currentPage === '#login'){
     return (
-      <Login/>
+      <Login
+        setCurrentPage={setCurrentPage}
+      />
     )
   }
 
   // -> Página Principal ----------------------------------------------------------------
   if(currentPage === '#popup'){
     return (
-      <Popup/>
+      <Popup
+        setCurrentPage={setCurrentPage}
+      />
     )
   }
 
   // -> Página Principal ----------------------------------------------------------------
   if(currentPage === '#search'){
     return (
-      <Search/>
+      <Search
+        setCurrentPage={setCurrentPage}
+      />
     )
   }
 
   // -> Página Principal ----------------------------------------------------------------
   if(currentPage === '#vetview'){
     return (
-      <VetView/>
+      <VetView
+        setCurrentPage={setCurrentPage}
+      />
       )
     }
       

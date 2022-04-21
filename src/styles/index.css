@@ -13,3 +13,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
+
+.emBtn{
+  margin: 3.5rem;
+  color: white;
+  border-radius: 3px;
+  text-transform: uppercase;
+  background-color: #FF5959;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;  
+}
