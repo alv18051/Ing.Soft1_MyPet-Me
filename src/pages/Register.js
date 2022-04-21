@@ -19,6 +19,7 @@ const Register = () => {
                     <InputComponent title='Correo'  message='Ingresa tu correo' />
                     <InputComponent title='Contraseña'  message='Ingresa tu contraseña' />
                     <InputComponent title='Cofirmar contraseña' message='Confirma tu contraseña' />
+                    <p>¿Ya tienes cuenta? <a href='#'>Iniciar sesión</a></p>
                 </div>
                 <div className='innerContainer'>
                         <Button
@@ -33,9 +34,6 @@ const Register = () => {
                         </Button>
                     </div>
             </div>
-
-            
-
         </div>
   )
 }

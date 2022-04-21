@@ -27,6 +27,11 @@ function Main({setCurrentPage}) {
       setCurrentPage("#register")
       window.history.pushState({}, '', '/emergency')
     }
+
+    const changeToLogin = () => {
+      setCurrentPage("#login")
+      window.history.pushState({}, '', '/login')
+    }
   
     return (
       <div>
@@ -37,6 +42,7 @@ function Main({setCurrentPage}) {
           <br></br>
           <br></br>
           <a onClick={changeToRegister} class="emBtn">Registro</a>
+          <a onClick={changeToLogin} class="emBtn">Log In</a>
 
         </div>
       </div>
