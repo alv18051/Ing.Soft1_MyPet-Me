@@ -32,6 +32,16 @@ body {
   background-color: #dfe1e1;
 }
 
+h3{
+  float: left;
+}
+
+.vetInfo{
+  height: 40vmin;
+  width: 15vmin;
+  border: 5px;
+  border-color: #dfe1e1;
+}
 
 /* Style the header with a grey background and some padding */
 .header {
@@ -85,4 +95,28 @@ body {
   .header-right {
     float: none;
   }
+}
+
+.displayInfo{
+  height: 80vmin;
+  width: 20vmax;
+  background-color: #ea9a64;
+  border-radius: 15px;
+  border-width: 10px;
+  border-color: white;
+  margin: 2vmin;  
+  padding: 1%;
+  float: left;
+}
+
+.displayMap{
+  height: 80vmin;
+  width: 70vmax;
+  background-color: #B58ED5;
+  border-radius: 15px;
+  border-width: 10px;
+  border-color: white;
+  margin: 2vmin;
+  padding: 1%;
+  float: right;
 }
