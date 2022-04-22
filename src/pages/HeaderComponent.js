@@ -26,7 +26,7 @@ import { Link, useNavigate } from "react-router-dom";
          <a href="#default" class="logo">My Pet&Me</a>
          <ul class="header-right">
            
-         <li className="option">
+         <li className="option active">
             <Link to={"/emergency"}>Emergencia</Link>
            </li>   
 

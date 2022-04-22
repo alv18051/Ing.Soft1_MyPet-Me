@@ -38,7 +38,7 @@ function App() {
   
   return (
     <Routes>
-    <Route path='/' element={<> <HeaderComponent/> <Main/>  </>}></Route>
+    <Route path='/' element={<> <Main/>  </>}></Route>
     <Route path='/emergency' element={<> <HeaderComponent/> <Emergency/>  </>}></Route>
     <Route path='/search' element={<> <HeaderComponent/> <Search/>  </>}></Route>
     <Route path='/login' element={<> <HeaderComponent/> <Login/>  </>}></Route>

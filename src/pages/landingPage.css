@@ -1,4 +1,4 @@
-video {
+img {
     position: absolute;
     top: 0;
     left: 0;
@@ -7,14 +7,37 @@ video {
     object-fit: cover;
 }
 
-header {
+.text{
+    position: relative;
+    z-index: 10;
+}
+
+.textCont{
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 100px;
-    z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    width: 100%;
+    padding: 150px;
+    color: #fff;
+}
+
+.text h1 {
+    font-size: 5em; 
+    font-weight: 800;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text h2 {
+    font-size: 4em; 
+    font-weight: 700;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text p{
+    font-size: 1.1em;
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 700px;
 }
