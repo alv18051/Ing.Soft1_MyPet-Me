@@ -33,13 +33,6 @@ function Main() {
               <p><b>Brindamos información acerca de veterinarias y los doctores que atienden en ellas, para que puedas llevar a tu mascota en caso de emergencia o atención médica.</b></p>
             </div>
           </div>
-          
-
-
-        
-        
-        
-
       </div>
     );
   }

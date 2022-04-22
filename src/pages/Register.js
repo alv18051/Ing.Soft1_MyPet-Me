@@ -19,7 +19,7 @@ const Register = () => {
                     <InputComponent title='Correo'  message='Ingresa tu correo' />
                     <InputComponent title='Contraseña'  message='Ingresa tu contraseña' />
                     <InputComponent title='Cofirmar contraseña' message='Confirma tu contraseña' />
-                    <p className='questionCont'>¿Ya tienes cuenta? <a href='#'> <b className='highlight'>Iniciar sesión</b></a></p>
+                    <p className='questionCont'>¿Ya tienes cuenta? <a href='/login'> <b className='highlight'>¡Inicia sesión!</b></a></p>
                 </div>
                 <div className='innerContainer'>
                         <Button
