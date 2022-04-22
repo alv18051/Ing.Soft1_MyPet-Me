@@ -16,7 +16,7 @@
 
  import React from "react";
  import '../styles/index.css'
-
+ import '../map.js';
 
  function Emergency({setCurrentPage}) {
 
@@ -52,7 +52,7 @@
          <div class="displayMap">
          <h3>Veterinarias más cercanas</h3>
          <p><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a></p>
-            <script src="../js/map.js"></script>
+            
             <iframe width="1100" height="500" src="https://api.maptiler.com/maps/streets/?key=KJJzdJb6HdpmbcSQnQc7#10.4/15.08004/-90.41161"></iframe>
          </div>
        </></>
