@@ -40,7 +40,7 @@ app.get("/testing", (req, res) => {
 
     const sql = `
         SELECT * FROM users;
-    `
+        `
     console.log(sql)
     db.query(sql, (err, row) => {
         console.log(row.rows)

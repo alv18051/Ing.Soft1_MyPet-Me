@@ -30,79 +30,13 @@ import Popup from "./pages/Popup";
 import Search from "./pages/Search";
 import VetView from "./pages/Vetview";
 import Register from "./pages/Register"
-import HeaderComponent from "./HeaderComponent";
+import HeaderComponent from "./pages/HeaderComponent";
 
 // ---------------------------------------------------------------------------------------
  
 function App() {
 
-  const [currentPage, setCurrentPage] = useState("#main")
-
-  useEffect(() => {
-    window.history.pushState({}, '', '/main')
-  })
-
-  // -> Página Principal ----------------------------------------------------------------
-  if(currentPage === '#main'){
-    return (
-      <Main
-        setCurrentPage={setCurrentPage}
-      />
-    )
-  }
-
-  // -> Página Principal ----------------------------------------------------------------
-  if(currentPage === '#emergency'){
-    return (
-      <Emergency
-        setCurrentPage={setCurrentPage}
-      />
-    )
-  }
-
-  // -> Página Principal ----------------------------------------------------------------
-  if(currentPage === '#login'){
-    return (
-      <Login
-        setCurrentPage={setCurrentPage}
-      />
-    )
-  }
-
-  // -> Página Principal ----------------------------------------------------------------
-  if(currentPage === '#popup'){
-    return (
-      <Popup
-        setCurrentPage={setCurrentPage}
-      />
-    )
-  }
-
-  // -> Página Principal ----------------------------------------------------------------
-  if(currentPage === '#search'){
-    return (
-      <Search
-        setCurrentPage={setCurrentPage}
-      />
-    )
-  }
-
-  // -> Página Principal ----------------------------------------------------------------
-  if(currentPage === '#vetview'){
-    return (
-      <VetView
-        setCurrentPage={setCurrentPage}
-      />
-      )
-    }
-
-  if(currentPage === '#register'){
-    return (
-      <Register
-        setCurrentPage={setCurrentPage}
-      />
-      )
-    }
+  
       
   // -> Por si no se selecciono una de las páginas anteriores ---------------------------
   return (

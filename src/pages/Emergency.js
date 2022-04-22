@@ -16,7 +16,6 @@
 
  import React from "react";
  import '../styles/index.css'
- import '../map.js';
 
  function Emergency({setCurrentPage}) {
 
@@ -30,14 +29,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script><>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-         <div class="header">
-           <a href="#default" class="logo">My Pet&Me</a>
-           <div class="header-right">
-             <a class="active" href="#home">Emergencia</a>
-             <a href="#contact">Búsqueda</a>
-             <a href="#about">Iniciar sesión</a>
-           </div>
-         </div>
+         
          <div class="displayInfo">
            <h2>Emergencia</h2>
            
