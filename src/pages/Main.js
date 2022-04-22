@@ -30,7 +30,7 @@ function Main() {
             <div class="text">
               <h2><b>My Pet & Me</b></h2>
               <h3> <b>Brindandote tranquilidad a ti y bienestar a tu mascota.</b></h3>
-              <p>Brindamos información acerca de veterinarias y los doctores que atienden en ellas, para que puedas llevar a tu mascota en caso de emergencia o atención médica.</p>
+              <p><b>Brindamos información acerca de veterinarias y los doctores que atienden en ellas, para que puedas llevar a tu mascota en caso de emergencia o atención médica.</b></p>
             </div>
           </div>
           
