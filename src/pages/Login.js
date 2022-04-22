@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import InputComponent from './InputComponent'
-import { Heading, Button } from '@chakra-ui/react';
+import { Heading, Button} from '@chakra-ui/react';
 import './register.css'
 
 
@@ -8,6 +8,7 @@ const Login = () => {
 
     const [correo, setCorreo] = useState('')
     const [contra1, setContra1] = useState('')
+    
 
     const getCorreo = (correo) => {
         setCorreo(correo)
@@ -37,9 +38,47 @@ const Login = () => {
                 console.log(result.exist)
                 console.log(result.data)
                 if(result.exist === 0){
-                    alert("USuario o contraseña no valido")
+                    //alert("USuario o contraseña no valido")
+                    console.log('yes')
                 }else{
-                    alert("Bienvenido")
+                    //alert("Bienvenido")
+                    console.log('no')
+
+
+                }
+            }else{
+                alert("Error con la solicitud")
+            }
+        })
+        .catch(error => {
+            alert("Ocurrio un error inesperado: " + error)
+        })
+    }
+
+    const handleVerifyVet = (email, password) => {
+        fetch("http://127.0.0.1:8000/verify_vet", {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+            
+        })
+        .then(response => response.json())
+        .then(result => {
+            if(result.success){
+                
+                console.log(result.exist)
+                console.log(result.data)
+                if(result.exist === 0){
+                    //alert("USuario o contraseña no valido")
+                    console.log('yes1')
+                }else{
+                    //alert("Bienvenido")
+                    console.log('no1')
 
 
                 }
@@ -54,7 +93,17 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
+        
         handleVerify(correo, contra1);
+        /*handleVerifyVet(correo, contra1);
+
+        if(handleVerify.exist === 0 && handleVerifyVet.exist === 0){
+            alert("USuario o contraseña no valido")
+        }else if (handleVerify.exist === 0 && handleVerifyVet.exist != 0){
+            alert('bienvenido Vet: ' + correo )
+        }else if(handleVerifyVet.exist === 0 && handleVerify.exist != 0){
+            alert('bienvenido User: ' + correo )
+        }*/
       };
 
   return (

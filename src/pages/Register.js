@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import InputComponent from './InputComponent'
-import { Heading, Button, Input, FormControl, FormLabel  } from '@chakra-ui/react';
+import { Heading, Button} from '@chakra-ui/react';
 import './register.css';
 
-
-
-
-
-let user_type = 'user';
+let user_type = 'vet';
 
 const Register = () => {
-
-    
-    
-    
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -23,7 +15,6 @@ const Register = () => {
     const [contra2, setContra2] = useState('')
 
     const handleAddUser = (user_name, email, password, type_user) => {
-        console.log(user_name + " - " + email + " - " + password + " - " + type_user)
         fetch("http://127.0.0.1:8000/add_user", {
             method: 'POST',
             headers: {
@@ -51,7 +42,6 @@ const Register = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        alert(`Email: ${correo} & Nombre: ${nombre} & Apellido: ${apellido} & Usuario: ${user} `);
         if(contra1 === contra2){
             handleAddUser(user, correo, contra1, user_type);
 

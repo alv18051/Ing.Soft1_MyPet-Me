@@ -63,7 +63,24 @@ app.post("/verify", (req, res) => {
     console.log("verificar usuarios")
     const sql = `
         SELECT email, password FROM users
-        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND email IS NOT NULL AND password IS NOT NULL;  
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND type_user LIKE 'user' AND email IS NOT NULL AND password IS NOT NULL;  
+        
+    
+    `
+    console.log(sql)
+    db.query(sql, (err, row) => {
+        //console.log(row)   console.log(row.rows)
+       
+        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
+        
+    })
+})
+
+app.post("/verify_vet", (req, res) => {
+    console.log("verificar veterinarios")
+    const sql = `
+        SELECT email, password FROM users
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}'AND type_user LIKE 'vet' AND email IS NOT NULL AND password IS NOT NULL;  
         
     
     `
