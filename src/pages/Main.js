@@ -14,9 +14,8 @@
  * Javier Alvarez
  #######################################################################################*/
 
-import React from "react";
-import './landingPage.css';
-import HeaderComponent from "./HeaderComponent";
+ import React from "react";
+ import HeaderComponent from "./HeaderComponent";
 
 function Main() {
       

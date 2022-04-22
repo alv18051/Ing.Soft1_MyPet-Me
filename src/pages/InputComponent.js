@@ -2,10 +2,10 @@ import React from 'react';
 import { Input, FormLabel } from '@chakra-ui/react';
 import './register.css'
 
-const InputComponent = ({ fun, title, message }) => {
+const InputComponent = ({ getter, title, message }) => {
 
   const handleChange = (event) => {
-    fun(event.target.value)
+    getter(event.target.value)
   }
 
   const colors = {

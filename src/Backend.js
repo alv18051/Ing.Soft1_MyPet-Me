@@ -24,11 +24,11 @@
  app.use(cors())
  
 const db = new Client({
-    host: "localhost",
-    database: "localmypet_and_me",
-    user: "postgres",
+    host: "",
+    database: "",
+    user: "",
     port: 5432,
-    password: "12345",
+    password: "",
     ssl: {
         rejectUnauthorized: false
     }
@@ -36,10 +36,10 @@ const db = new Client({
 db.connect();
 
 app.get("/testing", (req, res) => {
-    console.log("\nPROBANDO ANUNCIOS")
+    console.log("\nPROBANDO")
 
     const sql = `
-        SELECT * FROM query_user;
+        SELECT * FROM users;
     `
     console.log(sql)
     db.query(sql, (err, row) => {
@@ -62,6 +62,53 @@ app.post("/sort_by_rating", (req, res) => {
 
     })
 })
+app.post("/add_user", (req, res) => {
+    console.log("AGREGAR USER")
+
+    const sql = `
+        INSERT INTO users(user_name, email, password, type_user, failed_temps)
+        VALUES('${req.body.user_name}', '${req.body.correo}', '${req.body.password}','${req.body.type_user}', 0);
+    `
+    db.query(sql, (err, row) => {
+        (row) ? res.json({success: true}) : res.json({success: false})
+    })
+})
+
+app.post("/verify", (req, res) => {
+    console.log("verificar usuarios")
+    const sql = `
+        SELECT email, password FROM users
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND type_user LIKE 'user' AND email IS NOT NULL AND password IS NOT NULL;  
+        
+    
+    `
+    console.log(sql)
+    db.query(sql, (err, row) => {
+        //console.log(row)   console.log(row.rows)
+       
+        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
+        
+    })
+})
+
+app.post("/verify_vet", (req, res) => {
+    console.log("verificar veterinarios")
+    const sql = `
+        SELECT email, password FROM users
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}'AND type_user LIKE 'vet' AND email IS NOT NULL AND password IS NOT NULL;  
+        
+    
+    `
+    console.log(sql)
+    db.query(sql, (err, row) => {
+        //console.log(row)   console.log(row.rows)
+       
+        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
+        
+    })
+})
+
+
 
 app.listen(8000, () => {
     console.log('Starting MY PET AND ME in the port 8000')
