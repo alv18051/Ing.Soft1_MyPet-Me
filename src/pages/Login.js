@@ -38,10 +38,10 @@ const Login = () => {
                 console.log(result.exist)
                 console.log(result.data)
                 if(result.exist === 0){
-                    //alert("USuario o contraseña no valido")
+                    alert("USuario o contraseña no valido")
                     console.log('yes')
                 }else{
-                    //alert("Bienvenido")
+                    alert("Bienvenido")
                     console.log('no')
 
 
