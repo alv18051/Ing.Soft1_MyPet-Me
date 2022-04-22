@@ -14,35 +14,40 @@
  * Javier Alvarez
  #######################################################################################*/
 
-import React from "react";
-import './landingPage.css';
-import HeaderComponent from "./HeaderComponent";
+ import React from "react";
 
-function Main() {
-      
-    return (
-      <div>
-        
-          <HeaderComponent className="header"/>
-          <div className="textCont">
-            <img src='https://images.pexels.com/photos/247522/pexels-photo-247522.jpeg'></img>
-
-            <div class="text">
-              <h2><b>My Pet & Me</b></h2>
-              <h3> <b>Brindandote tranquilidad a ti y bienestar a tu mascota.</b></h3>
-              <p><b>Brindamos información acerca de veterinarias y los doctores que atienden en ellas, para que puedas llevar a tu mascota en caso de emergencia o atención médica.</b></p>
-            </div>
-          </div>
-          
-
-
-        
-        
-        
-
-      </div>
-    );
-  }
-  
-export default Main;
+ function Main({setCurrentPage}) {
+ 
+     const changeToEmergency = () => {
+       setCurrentPage("#emergency")
+       window.history.pushState({}, '', '/emergency')
+     }
+ 
+     const changeToRegister = () => {
+       setCurrentPage("#register")
+       window.history.pushState({}, '', '/emergency')
+     }
+ 
+     const changeToLogin = () => {
+       setCurrentPage("#login")
+       window.history.pushState({}, '', '/login')
+     }
+   
+     return (
+       <div>
+         <h1>My Pet And Me</h1>
+         <div>
+           {/* <a onClick={changeToEmergency} class="emBtn">Emergencia</a> */}
+           <a onClick={changeToEmergency} class="emBtn">Emergencia</a>
+           <br></br>
+           <br></br>
+           <a onClick={changeToRegister} class="emBtn">Registro</a>
+           <a onClick={changeToLogin} class="emBtn">Log In</a>
+ 
+         </div>
+       </div>
+     );
+   }
+   
+ export default Main;
   
