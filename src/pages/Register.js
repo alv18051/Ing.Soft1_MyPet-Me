@@ -5,9 +5,15 @@ import './register.css';
 
 
 
+
+
 let user_type = 'user';
 
 const Register = () => {
+
+    
+    
+    
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -47,7 +53,6 @@ const Register = () => {
         event.preventDefault();
         alert(`Email: ${correo} & Nombre: ${nombre} & Apellido: ${apellido} & Usuario: ${user} `);
         if(contra1 === contra2){
-            alert('las contraseñas coinciden');
             handleAddUser(user, correo, contra1, user_type);
 
         }else{

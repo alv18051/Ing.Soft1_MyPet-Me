@@ -36,7 +36,7 @@ const db = new Client({
 db.connect();
 
 app.get("/testing", (req, res) => {
-    console.log("\nPROBANDO ANUNCIOS")
+    console.log("\nPROBANDO")
 
     const sql = `
         SELECT * FROM users;
@@ -59,12 +59,21 @@ app.post("/add_user", (req, res) => {
     })
 })
 
-app.get("/verify", (req, res) => {
+app.post("/verify", (req, res) => {
+    console.log("verificar usuarios")
     const sql = `
         SELECT email, password FROM users
-        WHERE email ILIKE '${req.body.email}' AND password ILIKE ''${req.body.password}
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}';  
+        
     
     `
+    console.log(sql)
+    db.query(sql, (err, row) => {
+        //console.log(row)
+        console.log(row.rows)
+        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
+        
+    })
 })
 
 

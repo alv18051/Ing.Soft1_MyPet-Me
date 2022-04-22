@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputComponent from './InputComponent'
 import { Heading, Button } from '@chakra-ui/react';
 import './register.css'
@@ -16,23 +16,26 @@ const Login = () => {
         setContra1(contra)
     }
 
-    const handleVerify = ( email, password) => {
+    
+
+    const handleVerify = (email, password) => {
         fetch("http://127.0.0.1:8000/verify", {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'
             },
             body: JSON.stringify({
-                
                 email: email,
-                password: password,
-                
+                password: password
             })
+            
         })
         .then(response => response.json())
         .then(result => {
             if(result.success){
                 alert("Bienvenido")
+                console.log(result.exist)
+                console.log(result.data)
             }else{
                 alert("Error con la solicitud")
             }
@@ -44,13 +47,12 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        alert(`Email: ${correo} & Nombre: ${nombre} & Apellido: ${apellido} & Usuario: ${user} `);
-        if(contra1 === contra2){
-            alert('las contraseñas coinciden');
-            handleVerify( correo, contra1);
+        handleVerify(correo, contra1);
+        if(handleVerify.response.success === true ){
+            alert('Bienvenido');
 
         }else{
-            alert('no coinciden las contraseñas, vuelva a intentarlo')
+            alert('Usuario o contraseña incorrectos, vuelva a intentarlo')
         }
       };
 
@@ -77,8 +79,6 @@ const Login = () => {
                             Aceptar
                     </Button>
                     </form>
-                    <InputComponent title='Correo'  message='Ingresa tu correo' />
-                    <InputComponent title='Contraseña'  message='Ingresa tu contraseña' />
                     <p className='questionCont'>¿No tienes cuenta? <a href='#'><b className='highlight'>¡Registrate!</b></a></p>
                 </div>
                 <div className='innerContainer'>
