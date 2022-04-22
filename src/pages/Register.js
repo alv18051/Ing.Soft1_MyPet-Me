@@ -4,24 +4,28 @@ import { Heading, Button } from '@chakra-ui/react';
 import './register.css'
 
 
-const Login = () => {
+const Register = () => {
 
   return (
     <div className='provisionalBackgorund'>
             <div className='outerContainer container' >
                 <div className='infoContainer'>
                     <div className='titleContainer'>
-                        <Heading className='title'>Iniciar Sesión</Heading>
+                        <Heading className='title'>Registro</Heading>
                     </div>
+                    <InputComponent title='Nombre'  message='Ingresa tu nombre' />
+                    <InputComponent title='Apellidos'  message='Ingresa tus apellidos' />
+                    <InputComponent title='Nombre de usuario'  message='Ingresa tu nombre de usuario' />
                     <InputComponent title='Correo'  message='Ingresa tu correo' />
                     <InputComponent title='Contraseña'  message='Ingresa tu contraseña' />
-                    <p className='questionCont'>¿No tienes cuenta? <a href='/register'><b className='highlight'>¡Registrate!</b></a></p>
+                    <InputComponent title='Cofirmar contraseña' message='Confirma tu contraseña' />
+                    <p className='questionCont'>¿Ya tienes cuenta? <a href='/login'> <b className='highlight'>¡Inicia sesión!</b></a></p>
                 </div>
                 <div className='innerContainer'>
                         <Button
                             backgroundColor='#ea9a64'
-                            _hover='#ea9a64'
-                            _active={{bg:'#ea9a64', borderColor:'#ea9a64'}}
+                            _hover='rgb(174 213 142)'
+                            _active={{bg:'rgb(174 213 142)', borderColor:'rgb(174, 213, 142)'}}
                             color='#fff'
                             width='100%'
                             marginTop='10px'   
@@ -34,4 +38,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register

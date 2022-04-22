@@ -47,6 +47,7 @@ h3{
 .header {
   overflow: hidden;
   background-color:#B0D58E;
+  /* background-color:#B0D58E; */
   padding: 20px 10px;
 }
 
@@ -63,7 +64,8 @@ h3{
 }
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
-.header a.logo {
+/* .header a.logo { */
+.header h1.logo {
   font-size: 25px;
   font-weight: bold;
 }
@@ -71,11 +73,15 @@ h3{
 /* Change the background color on mouse-over */
 .header a:hover {
   background-color: #B58ED5;
+  /* background-color: #ea9a64; */
   color: black;
 }
 
 /* Style the active/current link*/
-.header a.active {
+/* .header a.active { */
+
+.header .active a {
+  border-radius: 4px;
   background-color: #FF5959;
   color: white;
 }
@@ -95,6 +101,12 @@ h3{
   .header-right {
     float: none;
   }
+}
+
+.option {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .displayInfo{
