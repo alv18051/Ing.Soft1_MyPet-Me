@@ -34,16 +34,14 @@ import Register from "./pages/Register"
 // ---------------------------------------------------------------------------------------
  
 function App() {
-
-
       
-  // -> Por si no se selecciono una de las páginas anteriores ---------------------------
+  
   return (
     <Routes>
     <Route path='/' element={<> <HeaderComponent/> <Main/>  </>}></Route>
     <Route path='/emergency' element={<> <HeaderComponent/> <Emergency/>  </>}></Route>
     <Route path='/search' element={<> <HeaderComponent/> <Search/>  </>}></Route>
-    <Route path='/login' element={<> <HeaderComponent/> <Register/>  </>}></Route>
+    <Route path='/login' element={<> <HeaderComponent/> <Login/>  </>}></Route>
 
   </Routes>
   );

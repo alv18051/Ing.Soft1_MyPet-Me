@@ -15,36 +15,15 @@
  #######################################################################################*/
 
 import React from "react";
+import './landingPage.css';
 
 function Main({setCurrentPage}) {
 
-    const changeToEmergency = () => {
-      setCurrentPage("#emergency")
-      window.history.pushState({}, '', '/emergency')
-    }
-
-    const changeToRegister = () => {
-      setCurrentPage("#register")
-      window.history.pushState({}, '', '/emergency')
-    }
-
-    const changeToLogin = () => {
-      setCurrentPage("#login")
-      window.history.pushState({}, '', '/login')
-    }
-  
+      
     return (
       <div>
-        <h1>My Pet And Me</h1>
-        <div>
-          {/* <a onClick={changeToEmergency} class="emBtn">Emergencia</a> */}
-          <a onClick={changeToEmergency} class="emBtn">Emergencia</a>
-          <br></br>
-          <br></br>
-          <a onClick={changeToRegister} class="emBtn">Registro</a>
-          <a onClick={changeToLogin} class="emBtn">Log In</a>
-
-        </div>
+        <img src='https://images.pexels.com/photos/247522/pexels-photo-247522.jpeg'></img>
+        
       </div>
     );
   }
