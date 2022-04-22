@@ -32,10 +32,21 @@ body {
   background-color: #dfe1e1;
 }
 
+h3{
+  float: left;
+}
+
+.vetInfo{
+  height: 40vmin;
+  width: 15vmin;
+  border: 5px;
+  border-color: #dfe1e1;
+}
 
 /* Style the header with a grey background and some padding */
 .header {
   overflow: hidden;
+  background-color:#B0D58E;
   /* background-color:#B0D58E; */
   padding: 20px 10px;
 }
@@ -53,6 +64,7 @@ body {
 }
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+/* .header a.logo { */
 .header h1.logo {
   font-size: 25px;
   font-weight: bold;
@@ -60,11 +72,14 @@ body {
 
 /* Change the background color on mouse-over */
 .header a:hover {
-  background-color: #ea9a64;
+  background-color: #B58ED5;
+  /* background-color: #ea9a64; */
   color: black;
 }
 
 /* Style the active/current link*/
+/* .header a.active { */
+
 .header .active a {
   border-radius: 4px;
   background-color: #FF5959;
