@@ -47,6 +47,21 @@ app.get("/testing", (req, res) => {
     })
 })
 
+app.post("/sort_by_rating", (req, res) => {
+    console.log("rating")
+    const sql = `
+        SELECT name FROM vet
+        WHERE emergency LIKE '${req.body.emergency}' AND emergency IS NOT NULL  
+        `
+    
+    console.log(sql)
+    db.query(sql, (err, row) => {
+        //console.log(row)   console.log(row.rows)
+
+        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
+
+    })
+})
 
 app.listen(8000, () => {
     console.log('Starting MY PET AND ME in the port 8000')
