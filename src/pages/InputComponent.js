@@ -5,8 +5,8 @@ import './register.css'
 const InputComponent = ({ fun, title, message }) => {
 
   const handleChange = (event) => {
-        fun(event.target.value)
-    }
+    fun(event.target.value)
+  }
 
   const colors = {
       fondo: 'rgb(223 225 225)',
@@ -17,15 +17,6 @@ const InputComponent = ({ fun, title, message }) => {
       verde3: '#ace291',
       verde4: '#b6e69e'
   }
-
-  const styles = {
-      outerContainer: {
-          width: '100%',
-          height: 'auto',
-          padding: '10px',
-          borderRadius: '10px',
-      },
-  };
 
   return (
     <div className='outerContainer2'>
