@@ -15,7 +15,7 @@ const Login = () => {
                     </div>
                     <InputComponent title='Correo'  message='Ingresa tu correo' />
                     <InputComponent title='Contraseña'  message='Ingresa tu contraseña' />
-                    <p className='questionCont'>¿No tienes cuenta? <a href='#'><b className='highlight'>¡Registrate!</b></a></p>
+                    <p className='questionCont'>¿No tienes cuenta? <a href='/register'><b className='highlight'>¡Registrate!</b></a></p>
                 </div>
                 <div className='innerContainer'>
                         <Button
