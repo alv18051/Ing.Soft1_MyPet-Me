@@ -63,14 +63,14 @@ app.post("/verify", (req, res) => {
     console.log("verificar usuarios")
     const sql = `
         SELECT email, password FROM users
-        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}';  
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND email IS NOT NULL AND password IS NOT NULL;  
         
     
     `
     console.log(sql)
     db.query(sql, (err, row) => {
-        //console.log(row)
-        console.log(row.rows)
+        //console.log(row)   console.log(row.rows)
+       
         (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
         
     })

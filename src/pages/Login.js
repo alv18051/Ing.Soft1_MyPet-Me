@@ -33,9 +33,16 @@ const Login = () => {
         .then(response => response.json())
         .then(result => {
             if(result.success){
-                alert("Bienvenido")
+                
                 console.log(result.exist)
                 console.log(result.data)
+                if(result.exist === 0){
+                    alert("USuario o contraseña no valido")
+                }else{
+                    alert("Bienvenido")
+
+
+                }
             }else{
                 alert("Error con la solicitud")
             }
@@ -48,12 +55,6 @@ const Login = () => {
     const handleSubmit = event => {
         event.preventDefault();
         handleVerify(correo, contra1);
-        if(handleVerify.response.success === true ){
-            alert('Bienvenido');
-
-        }else{
-            alert('Usuario o contraseña incorrectos, vuelva a intentarlo')
-        }
       };
 
   return (
