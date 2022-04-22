@@ -15,11 +15,15 @@
  #######################################################################################*/
 
  import React from "react";
+ import { Link, useNavigate } from "react-router-dom";
+ 
 
  function Search({onCurrentPage}) {
      return (
        <div>
          <h1>Search</h1>
+         <a href='/Popup'> <b className='highlight'>¡Veterinaria xd!</b></a>
+         <h3>a</h3>
        </div>
      );
    }
