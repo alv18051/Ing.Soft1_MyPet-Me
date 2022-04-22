@@ -15,21 +15,31 @@
  #######################################################################################*/
 
 import React from "react";
+import './landingPage.css';
+import HeaderComponent from "./HeaderComponent";
 
-function Main({setCurrentPage}) {
-
-    const changeToEmergency = () => {
-      setCurrentPage("#emergency")
-      window.history.pushState({}, '', '/emergency')
-    }
-  
+function Main() {
+      
     return (
       <div>
-        <h1>My Pet And Me</h1>
-        <div>
-          {/* <a onClick={changeToEmergency} class="emBtn">Emergencia</a> */}
-          <a onClick={changeToEmergency} class="emBtn">Emergencia</a>
-        </div>
+        
+          <HeaderComponent className="header"/>
+          <div className="textCont">
+            <img src='https://images.pexels.com/photos/247522/pexels-photo-247522.jpeg'></img>
+
+            <div class="text">
+              <h2><b>My Pet & Me</b></h2>
+              <h3> <b>Brindandote tranquilidad a ti y bienestar a tu mascota.</b></h3>
+              <p><b>Brindamos información acerca de veterinarias y los doctores que atienden en ellas, para que puedas llevar a tu mascota en caso de emergencia o atención médica.</b></p>
+            </div>
+          </div>
+          
+
+
+        
+        
+        
+
       </div>
     );
   }
