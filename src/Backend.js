@@ -43,7 +43,7 @@ app.get("/testing", (req, res) => {
         `
     console.log(sql)
     db.query(sql, (err, row) => {
-        console.log(row.rows)
+        console.log(row)
     })
 })
 
@@ -78,14 +78,12 @@ app.post("/verify", (req, res) => {
     console.log("verificar usuarios")
     const sql = `
         SELECT email, password FROM users
-        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND type_user LIKE 'user' AND email IS NOT NULL AND password IS NOT NULL;  
-        
-    
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND type_user LIKE 'user' AND email IS NOT NULL AND password IS NOT NULL;              
     `
+
     console.log(sql)
     db.query(sql, (err, row) => {
         //console.log(row)   console.log(row.rows)
-       
         (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
         
     })
@@ -108,6 +106,15 @@ app.post("/verify_vet", (req, res) => {
     })
 })
 
+app.get("/get_vets", (req, res) => {
+    console.log("Obtener todos los veterinarios")
+
+    const sql = 'SELECT * FROM vet v INNER JOIN location l ON v.id = l.id;'
+    db.query(sql, (err, row) => {
+        (row) ? res.json({success: true, data: row.rows}) : res.json({success: false, data: err})
+        console.log(row.rows)
+    })
+})
 
 
 app.listen(8000, () => {
