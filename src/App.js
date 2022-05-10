@@ -25,24 +25,28 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 // -> Importar el resto de las páginas
 import Main from "./pages/Main";
 import Emergency from "./pages/Emergency";
-import HeaderComponent from "./pages/HeaderComponent";
 import Login from "./pages/Login";
 import Popup from "./pages/Popup";
 import Search from "./pages/Search";
 import VetView from "./pages/Vetview";
 import Register from "./pages/Register"
+import HeaderComponent from "./pages/HeaderComponent";
+
 // ---------------------------------------------------------------------------------------
  
 function App() {
-      
+
   
+      
+  // -> Por si no se selecciono una de las páginas anteriores ---------------------------
   return (
     <Routes>
     <Route path='/' element={<> <Main/>  </>}></Route>
     <Route path='/emergency' element={<> <HeaderComponent/> <Emergency/>  </>}></Route>
     <Route path='/search' element={<> <HeaderComponent/> <Search/>  </>}></Route>
-    <Route path='/login' element={<> <HeaderComponent/> <Login/>  </>}></Route>
-
+    <Route path='/login' element={<> <Login/>  </>}></Route>
+    <Route path='/register' element={<>  <Register/>  </>}></Route>
+    <Route path='/Popup' element={<>  <Popup/>  </>}></Route>
   </Routes>
   );
 }

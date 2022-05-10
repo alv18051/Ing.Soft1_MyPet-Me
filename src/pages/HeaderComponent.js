@@ -22,20 +22,20 @@ import { Link, useNavigate } from "react-router-dom";
      return (
 
       <>
-      <nav class="header">
-         <a href="#default" class="logo">My Pet&Me</a>
-         <ul class="header-right">
-           
-         <li className="option active">
+      <nav className="header">
+         <Link to={"/"}> <h1 className="logo"><b>My Pet&Me</b></h1> </Link>
+
+         <ul className="header-right">  
+         <li className="option active btn">
             <Link to={"/emergency"}>Emergencia</Link>
            </li>   
 
-        <li className="option">
-            <Link to={"/search"}>Busqueda</Link>
+        <li className="option btn">
+            <Link to={"/search"}>Búsqueda</Link>
         </li>
 
-        <li className="option">
-            <Link to={"/login"}>Iniciar sesion</Link>
+        <li className="option btn">
+            <Link to={"/login"}>Iniciar sesión</Link>
         </li>
 
          </ul>
