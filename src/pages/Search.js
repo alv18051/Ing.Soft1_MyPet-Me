@@ -17,7 +17,21 @@
  import React, { useState } from 'react';
  import OptionComponent from './OptionComponent'
  import CardComponent from './CardComponent'
- import { Heading, Button, Input, FormControl, Select, Slider, RangeSlider, RangeSliderFilledTrack, RangeSliderTrack, RangeSliderThumb, SliderTrack, SliderFilledTrack, SliderThumb, Box, SliderMark, RangeSliderMark  } from '@chakra-ui/react';
+ import { Heading, Button, 
+        Input, 
+        FormControl, 
+        Select, 
+        Slider, 
+        RangeSlider, 
+        RangeSliderFilledTrack, 
+        RangeSliderTrack, 
+        RangeSliderThumb, 
+        SliderTrack, 
+        SliderFilledTrack, 
+        SliderThumb, 
+        Box, 
+        SliderMark, 
+        RangeSliderMark  } from '@chakra-ui/react';
  import './search.css'
 
 
