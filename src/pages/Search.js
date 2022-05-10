@@ -104,7 +104,7 @@ const handleSubmit = event => {
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Cercania</label>
-                <Slider min={0} max = {45}  defaultValue = {0} step = {15}>
+                <Slider min={0} max = {45}  defaultValue = {0} step = {15} onChangeEnd = {(val) => console.log(val)}>
                   <SliderMark value={1} mt = '1' ml = '-2.5' fontSize='smaller'>
                     1 km
                   </SliderMark>
@@ -140,7 +140,7 @@ const handleSubmit = event => {
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Tarifas</label>
-                <RangeSlider aria-label={['min', 'max']}  defaultValue = {[0, 20]} step = {25}>
+                <RangeSlider aria-label={['min', 'max']}  defaultValue = {[0, 10]} step = {25} onChangeEnd = {(val) => console.log(val)}>
                   <RangeSliderMark value={25} mt = '1' ml = '-2.5' fontSize='smaller'>
                     -Q.1k
                   </RangeSliderMark>
@@ -166,7 +166,7 @@ const handleSubmit = event => {
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Rating</label>
-                <RangeSlider aria-label={['min' ,'max']}  defaultValue = {[0, 10]} step = {33}>
+                <RangeSlider aria-label={['min' ,'max']}  defaultValue = {[0, 10]} step = {33} onChangeEnd = {(val) => console.log(val)}>
                   <RangeSliderMark value={33} mt = '1' ml = '-2.5' fontSize='smaller'>
                     1-3
                   </RangeSliderMark>
@@ -190,7 +190,7 @@ const handleSubmit = event => {
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Cant. de veterinarios</label>
-                <Slider min={0} max = {50}  defaultValue = {[0]} step = {10}>
+                <Slider min={0} max = {50}  defaultValue = {[0]} step = {10} onChangeEnd = {(val) => console.log(val)}>
                   <SliderMark value={12} mt = '1' ml = '-2.5' fontSize='smaller'>
                     1 
                   </SliderMark>
