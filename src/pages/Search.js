@@ -29,25 +29,7 @@
   const [Rating, setRating] = useState('')
   const [Cantidad, setCantidad] = useState('')
   
-  const getCercania = (Cercania) => {
-    setCercania(Cercania)
-}
-
-const getEmergencia = (Emergencia) => {
-  setEmergencia(Emergencia)
-}
-
-const getTarifas = (Tarifas) => {
-  setTarifas(Tarifas)
-}
-
-const getRating = (Rating) => {
-  setRating(Rating)
-}
-
-const getCantidad = (Cantidad) => {
-  setCantidad(Cantidad)
-}
+ 
 
 const [value, setValue] = React.useState('')
   
@@ -158,7 +140,19 @@ const handleSubmit = event => {
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Tarifas</label>
-                <RangeSlider aria-label={['min', 'max']}  defaultValue = {[0, 20]} step = {20}>
+                <RangeSlider aria-label={['min', 'max']}  defaultValue = {[0, 20]} step = {25}>
+                  <RangeSliderMark value={25} mt = '1' ml = '-2.5' fontSize='smaller'>
+                    -Q.1k
+                  </RangeSliderMark>
+                  <RangeSliderMark value={50} mt = '1' ml = '-2.5' fontSize='smaller'>
+                    Q2.4k
+                  </RangeSliderMark>
+                  <RangeSliderMark value={75} mt = '1' ml = '-2.5' fontSize='smaller'>
+                    Q3.9k
+                  </RangeSliderMark>
+                  <RangeSliderMark value={100} mt = '1' ml = '-2.5' fontSize='smaller'>
+                    Q.4k+
+                  </RangeSliderMark>
                   <RangeSliderTrack>
                     <Box position='relative' right={10}/>
                     <RangeSliderFilledTrack bg= 'orange'/>
@@ -172,9 +166,15 @@ const handleSubmit = event => {
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Rating</label>
-                <RangeSlider aria-label={['min', 'max']}  defaultValue = {[0, 20]} step = {20}>
-                  <RangeSliderMark value={1} mt = '1' ml = '-2.5' fontSize='smaller'>
+                <RangeSlider aria-label={['min' ,'max']}  defaultValue = {[0, 10]} step = {33}>
+                  <RangeSliderMark value={33} mt = '1' ml = '-2.5' fontSize='smaller'>
                     1-3
+                  </RangeSliderMark>
+                  <RangeSliderMark value={66} mt = '1' ml = '-2.5' fontSize='smaller'>
+                    3-4
+                  </RangeSliderMark>
+                  <RangeSliderMark value={99} mt = '1' ml = '-2.5' fontSize='smaller'>
+                    5
                   </RangeSliderMark>
                   
                   <RangeSliderTrack>
@@ -191,7 +191,7 @@ const handleSubmit = event => {
               <FormControl>
                 <label>Cant. de veterinarios</label>
                 <Slider min={0} max = {50}  defaultValue = {[0]} step = {10}>
-                  <SliderMark value={10} mt = '1' ml = '-2.5' fontSize='smaller'>
+                  <SliderMark value={12} mt = '1' ml = '-2.5' fontSize='smaller'>
                     1 
                   </SliderMark>
                   <SliderMark value={20} mt = '1' ml = '-2.5' fontSize='smaller'>
