@@ -179,30 +179,6 @@ const handleSubmit = event => {
 
             <div className='SearchOuterContainer2'>
               <FormControl>
-                <label>Rating</label>
-                <RangeSlider aria-label={['min' ,'max']}  defaultValue = {[0, 10]} step = {33} onChangeEnd = {(val) => console.log(val)}>
-                  <RangeSliderMark value={33} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    1-3
-                  </RangeSliderMark>
-                  <RangeSliderMark value={66} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    3-4
-                  </RangeSliderMark>
-                  <RangeSliderMark value={99} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    5
-                  </RangeSliderMark>
-                  
-                  <RangeSliderTrack>
-                    <Box position='relative' right={10}/>
-                    <RangeSliderFilledTrack bg = ' orange'/>
-                  </RangeSliderTrack>
-                  <RangeSliderThumb index={0}/>
-                  <RangeSliderThumb index={1}/>
-                </RangeSlider>
-              </FormControl>
-            </div>
-
-            <div className='SearchOuterContainer2'>
-              <FormControl>
                 <label>Cant. de veterinarios</label>
                 <Slider min={0} max = {50}  defaultValue = {[0]} step = {10} onChangeEnd = {(val) => console.log(val)}>
                   <SliderMark value={12} mt = '1' ml = '-2.5' fontSize='smaller'>
