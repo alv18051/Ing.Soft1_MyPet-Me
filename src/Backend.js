@@ -64,6 +64,50 @@ app.post("/sort_by_rating", (req, res) => {
 
     })
 })
+
+app.post("/price_filter", (req, res) => {
+    console.log("Filtro precio")
+
+    const sql = `
+        SELECT  name
+        FROM    vet
+        JOIN    services
+        ON      vet.ID = services.ID 
+        WHERE   price >= ${req.body.lowest_price}
+        AND     price <= ${req.body.highest_price};
+    `
+    db.query(sql, (err, row) => {
+        (row) ? res.json({success: true}) : res.json({success: false})
+    })
+})
+
+app.post("/name_filter", (req, res) => {
+    console.log("Filtro nombre")
+
+    const sql = `
+        SELECT          name
+        FROM            vet
+        WHERE           ILIKE   ${req.body.vets_name};
+    `
+    db.query(sql, (err, row) => {
+        (row) ? res.json({success: true}) : res.json({success: false})
+    })
+})
+
+
+app.post("/specialty_filter", (req, res) => {
+    console.log("Filtro especialidad")
+
+    const sql = `
+        
+    `
+    db.query(sql, (err, row) => {
+        (row) ? res.json({success: true}) : res.json({success: false})
+    })
+})
+
+
+
 app.post("/add_user", (req, res) => {
     console.log("AGREGAR USER")
 
@@ -81,8 +125,6 @@ app.post("/verify", (req, res) => {
     const sql = `
         SELECT email, password FROM users
         WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND type_user LIKE 'user' AND email IS NOT NULL AND password IS NOT NULL;  
-        
-    
     `
     console.log(sql)
     db.query(sql, (err, row) => {
@@ -97,9 +139,7 @@ app.post("/verify_vet", (req, res) => {
     console.log("verificar veterinarios")
     const sql = `
         SELECT email, password FROM users
-        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}'AND type_user LIKE 'vet' AND email IS NOT NULL AND password IS NOT NULL;  
-        
-    
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}'AND type_user LIKE 'vet' AND email IS NOT NULL AND password IS NOT NULL;      
     `
     console.log(sql)
     db.query(sql, (err, row) => {
