@@ -33,6 +33,7 @@
         SliderMark, 
         RangeSliderMark  } from '@chakra-ui/react';
  import './search.css'
+import InputComponent from './InputComponent';
 
 
  
@@ -42,10 +43,15 @@
   const [Tarifas, setTarifas] = useState('')
   const [Rating, setRating] = useState('')
   const [Cantidad, setCantidad] = useState('')
+  const [nombre, setNombre] = useState('')
+
+  const getNombre = (nombre) => {
+    setNombre(nombre)
+}
   
  
 
-const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState('')
   
    
 const  handleRanking= (emergency) => {
@@ -229,6 +235,7 @@ const handleSubmit = event => {
             </div>
           </div>
           <div className='SearchGridContainer'>
+            <InputComponent getter = {getNombre} title='Buscar por nombre'  message='Ingresa rl nombre de la veterinaria que deseas buscar' />
             <Input className='inputS' focusBorderColor='rgb(174 213 142)' placeholder='Ingrese el nombre de una veterinaria'/>
             <Button className='buttonS'
               backgroundColor='#ea9a64'
