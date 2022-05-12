@@ -15,9 +15,9 @@
  #######################################################################################*/
 
  import React from "react";
- import HeaderComponent from "./HeaderComponent";
+ import HeaderComponent from "./components/HeaderComponent";
  import { Link, useNavigate } from "react-router-dom";
- import './popup.css';
+ import '../styles/popup.css';
  import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
  import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'  
  import { Divider } from '@chakra-ui/react'

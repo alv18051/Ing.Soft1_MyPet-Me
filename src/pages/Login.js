@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import InputComponent from './InputComponent'
+import InputComponent from './components/InputComponent'
 import { Heading, Button} from '@chakra-ui/react';
-import './register.css'
+import '../styles/register.css'
 
 
 const Login = () => {

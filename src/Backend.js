@@ -37,18 +37,6 @@ const db = new Client({
 })
 db.connect();
 
-app.get("/testing", (req, res) => {
-    console.log("\nPROBANDO")
-
-    const sql = `
-        SELECT * FROM users;
-        `
-    console.log(sql)
-    db.query(sql, (err, row) => {
-        console.log(row)
-    })
-})
-
 app.post("/sort_by_rating", (req, res) => {
     console.log("rating")
     const sql = `
@@ -80,14 +68,11 @@ app.post("/verify", (req, res) => {
     console.log("verificar usuarios")
     const sql = `
         SELECT email, password FROM users
-        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}' AND type_user LIKE 'user' AND email IS NOT NULL AND password IS NOT NULL;              
+        WHERE email = '${req.body.email}' AND password = '${req.body.password}' LIMIT 1;              
     `
-
     console.log(sql)
     db.query(sql, (err, row) => {
-        //console.log(row)   console.log(row.rows)
-        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
-        
+        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})        
     })
 })
 
@@ -95,16 +80,11 @@ app.post("/verify_vet", (req, res) => {
     console.log("verificar veterinarios")
     const sql = `
         SELECT email, password FROM users
-        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}'AND type_user LIKE 'vet' AND email IS NOT NULL AND password IS NOT NULL;  
-        
-    
+        WHERE email ILIKE '${req.body.email}' AND password ILIKE '${req.body.password}'AND type_user LIKE 'vet' AND email IS NOT NULL AND password IS NOT NULL;              
     `
     console.log(sql)
-    db.query(sql, (err, row) => {
-        //console.log(row)   console.log(row.rows)
-       
-        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})
-        
+    db.query(sql, (err, row) => {       
+        (row) ? res.json({success: true, data:row.rows, exist: row.rows.length}) : res.json({success: false})        
     })
 })
 
@@ -114,10 +94,20 @@ app.get("/get_vets", (req, res) => {
     const sql = 'SELECT * FROM vet v INNER JOIN location l ON v.id = l.id;'
     db.query(sql, (err, row) => {
         (row) ? res.json({success: true, data: row.rows}) : res.json({success: false, data: err})
-        console.log(row.rows)
     })
 })
 
+// app.get("/testing", (req, res) => {
+//     console.log("\nPROBANDO")
+
+//     const sql = `
+//         SELECT * FROM users;
+//         `
+//     console.log(sql)
+//     db.query(sql, (err, row) => {
+//         console.log(row)
+//     })
+// })
 
 app.listen(8000, () => {
     console.log('Starting MY PET AND ME in the port 8000')

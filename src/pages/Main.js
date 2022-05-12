@@ -15,8 +15,8 @@
  #######################################################################################*/
 
  import React from "react";
- import './landingPage.css';
- import HeaderComponent from "./HeaderComponent";
+ import '../styles/landingPage.css';
+ import HeaderComponent from "./components/HeaderComponent";
  
  function Main() {
        

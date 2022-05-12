@@ -15,10 +15,10 @@
  #######################################################################################*/
 
  import React, { useState } from 'react';
- import OptionComponent from './OptionComponent'
- import CardComponent from './CardComponent'
+ import OptionComponent from './components/OptionComponent'
+ import CardComponent from './components/CardComponent'
  import { Heading, Button, Input, FormControl, Select  } from '@chakra-ui/react';
- import './search.css'
+ import '../styles/search.css'
 
 
  
