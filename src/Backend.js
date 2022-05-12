@@ -37,6 +37,18 @@ const db = new Client({
 })
 db.connect();
 
+app.get("/start_search", (req, res) => {
+    //console.log("\nPELICULAS Y SERIES")
+    const sql = `
+        SELECT id, name FROM vet;
+        `
+    //console.log(sql)
+    db.query(sql, (err, row) => {
+        console.log(row.rows)
+        res.json(row.rows)
+    })
+})
+
 app.get("/testing", (req, res) => {
     console.log("\nPROBANDO")
 
