@@ -38,6 +38,22 @@ import InputComponent from './InputComponent';
 
  
  function Search({onCurrentPage}) {
+  
+  const [posts, setPosts] = useState([]);
+  const [name, setName] = useState('')
+  
+  React.useEffect(() => {
+    getData(setPosts)
+  }, [])
+  
+  const getData = (setPosts) => {
+    fetch('http://127.0.0.1:8000/start_search')
+      .then(response => response.json())
+      .then(data => {
+        setPosts(data)
+      })
+  }
+  
   const [Cercania, setCercania] = useState('')
   const [Emergencia, setEmergencia] = useState('')
   const [Tarifas, setTarifas] = useState('')
@@ -119,7 +135,7 @@ const handleSubmit = event => {
               <Heading className='title'>Filtros</Heading>
             </div>
             
-            <form onSubmit={target}>
+            <form>
 
             <div className='SearchOuterContainer2'>
               <FormControl>
@@ -248,14 +264,15 @@ const handleSubmit = event => {
           </div>
 
           <div className='CardsContainer'>
-            <CardComponent title='Veterinaria El Rejo'  link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='Veterinaria La Paz'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='CEMIVET'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='VETINSA'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='Veterinaria El Pastor'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='Veterinaria La Bendicion'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='Veterinaria El Cerro'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='DANA'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
+           {
+              posts.map(post => {
+                return(
+                  <div key={post.idcontenido}>
+                    <CardComponent title={post.name} link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
+                  </div>
+                )
+              })
+            }
           </div>
 
         </div>
