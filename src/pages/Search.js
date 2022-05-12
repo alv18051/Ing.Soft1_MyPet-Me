@@ -14,7 +14,7 @@
  * Javier Alvarez
  #######################################################################################*/
 
- import React, { useState } from 'react';
+ import React, { useState, useEffect, Component } from 'react';
  import OptionComponent from './OptionComponent'
  import CardComponent from './CardComponent'
  import { Heading, Button, 
