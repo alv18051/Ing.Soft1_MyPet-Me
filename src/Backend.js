@@ -14,21 +14,23 @@
  * Javier Alvarez
  #######################################################################################*/
 
- const express = require('express')
- const app = express()
- const { Client } = require('pg'); // npm install pg
- const bodyParser = require('body-parser')
- const cors = require('cors'); // npm install cors
- 
- app.use(bodyParser.json())
- app.use(cors())
+require("dotenv").config()
+
+const express = require('express')
+const app = express()
+const { Client } = require('pg'); // npm install pg
+const bodyParser = require('body-parser')
+const cors = require('cors'); // npm install cors
+
+app.use(bodyParser.json())
+app.use(cors())
  
 const db = new Client({
-    host: "",
-    database: "",
-    user: "",
-    port: 5432,
-    password: "",
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+    user: process.env.DB_USER,
+    port: process.env.PORT,
+    password: process.env.DB_PASSWORD,
     ssl: {
         rejectUnauthorized: false
     }
