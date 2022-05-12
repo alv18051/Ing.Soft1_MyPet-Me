@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InputComponent from './InputComponent'
 import { Heading, Button} from '@chakra-ui/react';
 import './register.css';
+import Google from './Google-sign';
 
 let user_type = 'vet';
 
@@ -98,6 +99,10 @@ const Register = () => {
                             Aceptar
                     </Button>
                     </form>
+                    <div className='g-signin'>
+                        <Google/>
+
+                    </div>
 
                     <p className='questionCont'>¿Ya tienes cuenta? <a href='./Login'> <b className='highlight'>Iniciar sesión</b></a></p>
                 </div>
