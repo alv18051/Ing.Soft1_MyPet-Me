@@ -14,7 +14,7 @@
  * Javier Alvarez
  #######################################################################################*/
 
- import React, { useState, useEffect, Component } from 'react';
+ import React, { useState, useEffect, Component, useMemo } from 'react';
  import OptionComponent from './OptionComponent'
  import CardComponent from './CardComponent'
  import { Heading, Button, 
@@ -31,6 +31,7 @@
         SliderThumb, 
         Box, 
         SliderMark, 
+        Switch,
         RangeSliderMark  } from '@chakra-ui/react';
  import './search.css'
 import InputComponent from './InputComponent';
@@ -38,14 +39,22 @@ import InputComponent from './InputComponent';
 
  
  function Search({onCurrentPage}) {
-  
+
   const [posts, setPosts] = useState([]);
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
+
   
-  React.useEffect(() => {
-    getData(setPosts)
+  const [emergency, setEmergency] = useState(false);
+  
+
+  const getName = (name) => {
+    setName(name)
+  }
+
+  useEffect(() => {
+    getDataName();
   }, [])
-  
+
   const getData = (setPosts) => {
     fetch('http://127.0.0.1:8000/start_search')
       .then(response => response.json())
@@ -54,6 +63,47 @@ import InputComponent from './InputComponent';
       })
   }
   
+
+  const getDataName= () => {
+    fetch("http://127.0.0.1:8000/start_search", {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            emergency: emergency
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+      setPosts(data)
+    })
+  } 
+
+  const getFilteredData= () => {
+    fetch("http://127.0.0.1:8000/apply_filters", {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            emergency: emergency
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+      setPosts(data)
+    })
+  } 
+
+  
+
+
+
+
+
+
   const [Cercania, setCercania] = useState('')
   const [Emergencia, setEmergencia] = useState('')
   const [Tarifas, setTarifas] = useState('')
@@ -61,69 +111,20 @@ import InputComponent from './InputComponent';
   const [Cantidad, setCantidad] = useState('')
   const [nombre, setNombre] = useState('')
 
-  const getNombre = (nombre) => {
-    setNombre(nombre)
-}
+  
   
  
 
-  const [value, setValue] = React.useState('')
-  
-   
-const  handleRanking= (emergency) => {
-  fetch("http://127.0.0.1:8000/sort_by_rating", {
-      method: 'POST',
-      headers: {
-          'Content-Type' : 'application/json'
-      },
-      body: JSON.stringify({
-          emergency: emergency,
-
-      })
-
-  })
-  .then(response => response.json())
-  .then(result => {
-      if(result.success){
-
-          console.log(result.exist)
-          console.log(result.data)
-          if(result.exist === 0){
-              alert("No se encontraron veterinarias")
-
-          }else{
-              //alert("Vet: El trejo")
-              console.log('no')
 
 
-          }
-      }else{
-          alert("Error con la solicitud")
-      }
-  })
-  .catch(error => {
-      alert("Ocurrio un error inesperado: " + error)
-  })
-} 
 
-const handleSubmit = event => {
-  event.preventDefault();
-  if(Emergencia === 'true'){
-    setEmergencia = true;
-  } else{
-    setEmergencia = false
-  }
-  
-
-  handleRanking(Emergencia);
-
-};
 
 
 
     const target = event => {
-      alert(`Cercania: ${Cercania} & Especialidad: ${Emergencia} & Tarifas: ${Tarifas} 
-      & Rating: ${Rating} & Cantidad: ${Cantidad} `);
+      //alert(`Cercania: ${Cercania} & Especialidad: ${Emergencia} & Tarifas: ${Tarifas} 
+      //& Rating: ${Rating} & Cantidad: ${Cantidad} `);
+      alert(`name: ${emergency}`)
       event.preventDefault();
     }
    
@@ -135,7 +136,7 @@ const handleSubmit = event => {
               <Heading className='title'>Filtros</Heading>
             </div>
             
-            <form>
+            <form onClick={event => getDataName()}>
 
             <div className='SearchOuterContainer2'>
               <FormControl>
@@ -166,9 +167,9 @@ const handleSubmit = event => {
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Emergencia</label>
-                <Select placeholder={'-Representa una emergencia'} focusBorderColor={'rgb(174 213 142)'} onChange ={event => setEmergencia(event.currentTarget.value)}>
+                <Select placeholder='-Representa una emergencia' focusBorderColor={'rgb(174 213 142)'} onChange ={event => setEmergency(event.currentTarget.value)}>
                     <option value='true'>{'Si'}</option>
-                    <option value='false'>{'No'}</option>
+                    <option value='false'  >{'No'}</option>
                   </Select>
               </FormControl>
             </div>
@@ -251,9 +252,9 @@ const handleSubmit = event => {
             </div>
           </div>
           <div className='SearchGridContainer'>
-            <InputComponent getter = {getNombre} title='Buscar por nombre'  message='Ingresa rl nombre de la veterinaria que deseas buscar' />
-            <Input className='inputS' focusBorderColor='rgb(174 213 142)' placeholder='Ingrese el nombre de una veterinaria'/>
-            <Button className='buttonS'
+            
+            <Input onChange={event => setName(event.currentTarget.value)} className='inputS' focusBorderColor='rgb(174 213 142)' placeholder='Ingrese el nombre de una veterinaria'/>
+            <Button onClick={event => getDataName()} className='buttonS'
               backgroundColor='#ea9a64'
               _hover='rgb(174 213 142)'
               _active={{bg:'rgb(174 213 142)', borderColor:'rgb(174, 213, 142)'}}
@@ -264,10 +265,11 @@ const handleSubmit = event => {
           </div>
 
           <div className='CardsContainer'>
-           {
+            {
+              
               posts.map(post => {
                 return(
-                  <div key={post.idcontenido}>
+                  <div key={post.id}>
                     <CardComponent title={post.name} link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
                   </div>
                 )
