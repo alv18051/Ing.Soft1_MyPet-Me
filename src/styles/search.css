@@ -124,3 +124,15 @@
     height: 100%;
     height: auto;
 }
+
+.aply-changes {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.aply-changes:hover {
+    background-color: var(--verde);
+}

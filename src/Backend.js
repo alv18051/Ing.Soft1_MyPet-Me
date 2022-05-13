@@ -37,6 +37,33 @@ const db = new Client({
 })
 db.connect();
 
+app.post("/start_search", (req, res) => {
+    //console.log("\nPELICULAS Y SERIES")
+    const sql = `
+        SELECT id, name FROM vet
+        WHERE name ILIKE '%${req.body.name}%'
+        AND emergency = ${req.body.emergency};
+        `
+    //console.log(sql)
+    db.query(sql, (err, row) => {
+        console.log(row.rows)
+        console.log(req.body.name)
+        res.json(row.rows)
+    })
+})
+
+app.get("/testing", (req, res) => {
+    console.log("\nPROBANDO")
+
+    const sql = `
+        SELECT * FROM users;
+        `
+    console.log(sql)
+    db.query(sql, (err, row) => {
+        console.log(row.rows)
+    })
+})
+
 app.post("/sort_by_rating", (req, res) => {
     console.log("rating")
     const sql = `
@@ -52,6 +79,36 @@ app.post("/sort_by_rating", (req, res) => {
 
     })
 })
+
+app.post("/price_filter", (req, res) => {
+    console.log("Filtro precio")
+
+    const sql = `
+        SELECT  name
+        FROM    vet
+        JOIN    services
+        ON      vet.ID = services.ID 
+        WHERE   price >= ${req.body.lowest_price}
+        AND     price <= ${req.body.highest_price};
+    `
+    db.query(sql, (err, row) => {
+        (row) ? res.json({success: true}) : res.json({success: false})
+    })
+})
+
+app.post("/name_filter", (req, res) => {
+    console.log("Filtro nombre")
+
+    const sql = `
+        SELECT          name
+        FROM            vet
+        WHERE           ILIKE   ${req.body.vets_name};
+    `
+    db.query(sql, (err, row) => {
+        (row) ? res.json({success: true}) : res.json({success: false})
+    })
+})
+
 app.post("/add_user", (req, res) => {
     console.log("AGREGAR USER")
 
@@ -96,18 +153,6 @@ app.get("/get_vets", (req, res) => {
         (row) ? res.json({success: true, data: row.rows}) : res.json({success: false, data: err})
     })
 })
-
-// app.get("/testing", (req, res) => {
-//     console.log("\nPROBANDO")
-
-//     const sql = `
-//         SELECT * FROM users;
-//         `
-//     console.log(sql)
-//     db.query(sql, (err, row) => {
-//         console.log(row)
-//     })
-// })
 
 app.listen(8000, () => {
     console.log('Starting MY PET AND ME in the port 8000')
