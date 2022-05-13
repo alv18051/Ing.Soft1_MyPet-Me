@@ -40,14 +40,12 @@ db.connect();
 app.post("/start_search", (req, res) => {
     //console.log("\nPELICULAS Y SERIES")
     const sql = `
-        SELECT id, name FROM vet
+        SELECT * FROM vet
         WHERE name ILIKE '%${req.body.name}%'
         AND emergency = ${req.body.emergency};
         `
     //console.log(sql)
     db.query(sql, (err, row) => {
-        console.log(row.rows)
-        console.log(req.body.name)
         res.json(row.rows)
     })
 })

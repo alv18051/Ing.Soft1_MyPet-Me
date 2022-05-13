@@ -17,6 +17,8 @@
 import React, { useState, useEffect, Component, useMemo } from 'react';
 import OptionComponent from './components/OptionComponent'
 import CardComponent from './components/CardComponent'
+import Popup from './Popup';
+
 import { Heading, Button, 
         Input, 
         FormControl, 
@@ -35,27 +37,20 @@ import { Heading, Button,
         RangeSliderMark  } from '@chakra-ui/react';
 
 import '../styles/search.css'
-import InputComponent from './InputComponent';
+import InputComponent from './components/InputComponent';
  
 function Search({}) {
 
     const [posts, setPosts] = useState([]);
     const [name, setName] = useState('');
-
-
     const [emergency, setEmergency] = useState(false);
+
+    const[selectedVet, setSelectedVet] = useState({})
+    const[seePopup, setSeePopup] = useState(false)
 
     useEffect(() => {
         getDataName();
     }, [])
-
-    const getData = (setPosts) => {
-    fetch('http://127.0.0.1:8000/start_search')
-      .then(response => response.json())
-      .then(data => {
-      setPosts(data)
-      })
-    }
     
     const getDataName= () => {
         fetch("http://127.0.0.1:8000/start_search", {
@@ -74,174 +69,174 @@ function Search({}) {
         })
     } 
 
-    const getFilteredData= () => {
-        fetch("http://127.0.0.1:8000/apply_filters", {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({
-                emergency: emergency
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-        setPosts(data)
-        })
-    } 
+    const SeeSearch = () => {
+        return(
+            <div className='SearchBackgorund'>
+                <div className='SearchOuterContainer container'>
+                  <div className='SearchInfoContainer'>
+                    <div className='titleContainer'>
+                      <Heading className='title'>Filtros</Heading>
+                    </div>
 
-    const target = event => {
-        //alert(`Cercania: ${Cercania} & Especialidad: ${Emergencia} & Tarifas: ${Tarifas} 
-        //& Rating: ${Rating} & Cantidad: ${Cantidad} `);
-        alert(`name: ${emergency}`)
-        event.preventDefault();
+                    <form onClick={event => getDataName()}>
+
+                    <div className='SearchOuterContainer2'>
+                      <FormControl>
+                        <label>Cercania</label>
+                        <Slider min={0} max = {45}  defaultValue = {0} step = {15} onChangeEnd = {(val) => console.log(val)}>
+                          <SliderMark value={1} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            1 km
+                          </SliderMark>
+                          <SliderMark value={15} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            2 km
+                          </SliderMark>
+                          <SliderMark value={30} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            4 km
+                          </SliderMark>
+                          <SliderMark value={45} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            5+ km
+                          </SliderMark>
+                          <SliderTrack>
+                            <Box position='relative' right={10}/>
+                            <SliderFilledTrack bg= 'orange'/>
+                          </SliderTrack>
+                          <SliderThumb />
+                        </Slider>
+
+                      </FormControl>
+                    </div>
+
+                    <div className='SearchOuterContainer2'>
+                      <FormControl>
+                        <label>Emergencia</label>
+                        <Select focusBorderColor={'rgb(174 213 142)'} onChange ={event => setEmergency(event.currentTarget.value)}>
+                            <option value='true' onClick={() => console.log("PRUEBA TRUE")}>{'Si'}</option>
+                            <option value='false' onClick={() => console.log("PRUEBA FALSE")}>{'No'}</option>
+                          </Select>
+                      </FormControl>
+                    </div>
+
+                    <div className='SearchOuterContainer2'>
+                      <FormControl>
+                        <label>Tarifas</label>
+                        <RangeSlider aria-label={['min', 'max']}  defaultValue = {[0, 10]} step = {25} onChangeEnd = {(val) => console.log(val)}>
+                          <RangeSliderMark value={25} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            -Q.1k
+                          </RangeSliderMark>
+                          <RangeSliderMark value={50} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            Q2.4k
+                          </RangeSliderMark>
+                          <RangeSliderMark value={75} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            Q3.9k
+                          </RangeSliderMark>
+                          <RangeSliderMark value={100} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            Q.4k+
+                          </RangeSliderMark>
+                          <RangeSliderTrack>
+                            <Box position='relative' right={10}/>
+                            <RangeSliderFilledTrack bg= 'orange'/>
+                          </RangeSliderTrack>
+                          <RangeSliderThumb index={0}/>
+                          <RangeSliderThumb index={1}/>
+                        </RangeSlider>
+                      </FormControl>
+                    </div>
+
+                    <div className='SearchOuterContainer2'>
+                      <FormControl>
+                        <label>Cant. de veterinarios</label>
+                        <Slider min={0} max = {50}  defaultValue = {[0]} step = {10} onChangeEnd = {(val) => console.log(val)}>
+                          <SliderMark value={12} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            1 
+                          </SliderMark>
+                          <SliderMark value={20} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            1-2 
+                          </SliderMark>
+                          <SliderMark value={30} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            2-4 
+                          </SliderMark>
+                          <SliderMark value={40} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            5-7 
+                          </SliderMark>
+                          <SliderMark value={50} mt = '1' ml = '-2.5' fontSize='smaller'>
+                            7+
+                          </SliderMark>
+
+                          <SliderTrack>
+                            <Box position='relative' right={10}/>
+                            <SliderFilledTrack bg= 'orange'/>
+                          </SliderTrack>
+                          <SliderThumb />
+                        </Slider>
+                      </FormControl>
+                    </div>
+
+
+                    <button className='aply-changes'>
+                        Eliminar filtros
+                    </button>
+
+                    </form>
+                  </div>
+                </div>
+
+                <div className='SearchOuterContainer3 container'>
+                  <div className='SearchInfoContainer'>
+                    <div className='titleContainer'>
+                      <Heading className='title'>Busqueda de veterinarias</Heading>
+                    </div>
+                  </div>
+                  <div className='SearchGridContainer'>
+
+                    <Input onChange={event => setName(event.currentTarget.value)} className='inputS' focusBorderColor='rgb(174 213 142)' placeholder='Ingrese el nombre de una veterinaria'/>
+                    <Button onClick={event => getDataName()} className='buttonS'
+                      backgroundColor='#ea9a64'
+                      _hover='rgb(174 213 142)'
+                      _active={{bg:'rgb(174 213 142)', borderColor:'rgb(174, 213, 142)'}}
+                      color='#fff'
+                      grid-column='8'
+                      grid-row='1'
+                    >	&#x1F50D; </Button>
+                  </div>
+
+                  <div className='CardsContainer'>
+                    {posts.map(vet => {
+                            return (
+                                <div>
+                                    <CardComponent
+                                        vet={vet}
+                                        image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'
+                                        setSeePopup={setSeePopup}
+                                        setSelectedVet={setSelectedVet}
+                                    />
+                                </div>
+                            )
+                        }
+                    )}
+                  </div>
+                    
+                </div>
+            </div>
+        )
     }
    
     return (
-      <div className='SearchBackgorund'>
-        <div className='SearchOuterContainer container'>
-          <div className='SearchInfoContainer'>
-            <div className='titleContainer'>
-              <Heading className='title'>Filtros</Heading>
-            </div>
-            
-            <form onClick={event => getDataName()}>
-
-            <div className='SearchOuterContainer2'>
-              <FormControl>
-                <label>Cercania</label>
-                <Slider min={0} max = {45}  defaultValue = {0} step = {15} onChangeEnd = {(val) => console.log(val)}>
-                  <SliderMark value={1} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    1 km
-                  </SliderMark>
-                  <SliderMark value={15} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    2 km
-                  </SliderMark>
-                  <SliderMark value={30} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    4 km
-                  </SliderMark>
-                  <SliderMark value={45} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    5+ km
-                  </SliderMark>
-                  <SliderTrack>
-                    <Box position='relative' right={10}/>
-                    <SliderFilledTrack bg= 'orange'/>
-                  </SliderTrack>
-                  <SliderThumb />
-                </Slider>
-                  
-              </FormControl>
-            </div>
-
-            <div className='SearchOuterContainer2'>
-              <FormControl>
-                <label>Emergencia</label>
-                <Select focusBorderColor={'rgb(174 213 142)'} onChange ={event => setEmergency(event.currentTarget.value)}>
-                    <option value='true' onClick={() => console.log("PRUEBA TRUE")}>{'Si'}</option>
-                    <option value='false' onClick={() => console.log("PRUEBA FALSE")}>{'No'}</option>
-                  </Select>
-              </FormControl>
-            </div>
-
-            <div className='SearchOuterContainer2'>
-              <FormControl>
-                <label>Tarifas</label>
-                <RangeSlider aria-label={['min', 'max']}  defaultValue = {[0, 10]} step = {25} onChangeEnd = {(val) => console.log(val)}>
-                  <RangeSliderMark value={25} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    -Q.1k
-                  </RangeSliderMark>
-                  <RangeSliderMark value={50} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    Q2.4k
-                  </RangeSliderMark>
-                  <RangeSliderMark value={75} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    Q3.9k
-                  </RangeSliderMark>
-                  <RangeSliderMark value={100} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    Q.4k+
-                  </RangeSliderMark>
-                  <RangeSliderTrack>
-                    <Box position='relative' right={10}/>
-                    <RangeSliderFilledTrack bg= 'orange'/>
-                  </RangeSliderTrack>
-                  <RangeSliderThumb index={0}/>
-                  <RangeSliderThumb index={1}/>
-                </RangeSlider>
-              </FormControl>
-            </div>
-
-            <div className='SearchOuterContainer2'>
-              <FormControl>
-                <label>Cant. de veterinarios</label>
-                <Slider min={0} max = {50}  defaultValue = {[0]} step = {10} onChangeEnd = {(val) => console.log(val)}>
-                  <SliderMark value={12} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    1 
-                  </SliderMark>
-                  <SliderMark value={20} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    1-2 
-                  </SliderMark>
-                  <SliderMark value={30} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    2-4 
-                  </SliderMark>
-                  <SliderMark value={40} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    5-7 
-                  </SliderMark>
-                  <SliderMark value={50} mt = '1' ml = '-2.5' fontSize='smaller'>
-                    7+
-                  </SliderMark>
-                  
-                  <SliderTrack>
-                    <Box position='relative' right={10}/>
-                    <SliderFilledTrack bg= 'orange'/>
-                  </SliderTrack>
-                  <SliderThumb />
-                </Slider>
-              </FormControl>
-            </div>
-
-          
-            <button className='aply-changes'>
-                Eliminar filtros
-            </button>
-        
-            </form>
-          </div>
-        </div>
-
-        <div className='SearchOuterContainer3 container'>
-          <div className='SearchInfoContainer'>
-            <div className='titleContainer'>
-              <Heading className='title'>Busqueda de veterinarias</Heading>
-            </div>
-          </div>
-          <div className='SearchGridContainer'>
-            
-            <Input onChange={event => setName(event.currentTarget.value)} className='inputS' focusBorderColor='rgb(174 213 142)' placeholder='Ingrese el nombre de una veterinaria'/>
-            <Button onClick={event => getDataName()} className='buttonS'
-              backgroundColor='#ea9a64'
-              _hover='rgb(174 213 142)'
-              _active={{bg:'rgb(174 213 142)', borderColor:'rgb(174, 213, 142)'}}
-              color='#fff'
-              grid-column='8'
-              grid-row='1'
-            >	&#x1F50D; </Button>
-          </div>
-
-          <div className='CardsContainer'>
-            {
-              
-              posts.map(post => {
-                return(
-                  <div key={post.id}>
-                    <CardComponent title={post.name} link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-                  </div>
-                )
-              })
-            }
-          </div>
-
-        </div>
-        </div>
+        <>
+            {!seePopup && <SeeSearch/>}
+            {seePopup && <Popup vet={selectedVet} regretOriginal={setSeePopup} />}
+        </>
     );
 }
    
 export default Search;
+
+// {
+              
+//     posts.map(post => {
+//       return(
+//         <div key={post.id}>
+//           {/* <CardComponent title={post.name} link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/> */}
+//         </div>
+//       )
+//     })
+//   }
