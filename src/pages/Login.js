@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputComponent from './InputComponent'
 import { Heading, Button} from '@chakra-ui/react';
 import './register.css'
@@ -7,6 +7,34 @@ import { gapi } from 'gapi-script'
 
 
 const Login = () => {
+
+    const cliente = ""
+    const [showloginButton, setShowloginButton] = useState(true);
+    
+    const loginHandleSuccess = (res) => {
+        console.log('Login Success:', res.profileObj);
+        alert('Se ha ingresado con Google')
+        setShowloginButton(false);
+
+    }
+    
+    const loginHandleFail = (res) => {
+        alert('Error inesperado')
+        console.log('Login failed:', res);
+        setShowloginButton(false);
+
+    }
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                cliente: cliente,
+                scope: ""
+            })
+        };
+        gapi.load('client:auth2', start)
+    });
+    var accessToken = gapi.auth.getToken().access_token;
 
     const [correo, setCorreo] = useState('')
     const [contra1, setContra1] = useState('')
@@ -131,6 +159,18 @@ const Login = () => {
                             Aceptar
                     </Button>
                     </form>
+                    <p className='questionCont2'>or</p>
+                    <div className='g-signin'>
+                        <GoogleLogin
+                            clientId={cliente}
+                            buttonText="Login with Google"
+                            onSuccess={loginHandleSuccess}
+                            onFailure = {loginHandleFail}
+                            cookiePolicy={'single_host_origin'}
+                            isSignedIn={true}
+                        />
+
+                    </div>
                     <p className='questionCont'>¿No tienes cuenta? <a href='/register'><b className='highlight'>¡Registrate!</b></a></p>
                 </div>
                 <div className='innerContainer'>
