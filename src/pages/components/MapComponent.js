@@ -16,32 +16,31 @@ const MapComponent = ({ vets, setSelectedVet }) => {
     const positions = [vet["long"], vet["lat"]]
     
     const handle = () => {
-      setSelectedVet(vet)
+        setSelectedVet(vet)
     }
     
     return (
-      <div onClick={handle}>
-        <Marker position={positions} icon={icon}>
-          <Popup>
-            {vet["name"]} <br /> <button onClick={handle} className="btn-marker">VER MAS</button>
-          </Popup>
-        </Marker>       
-      </div>
+        <div onClick={handle}>
+            <Marker position={positions} icon={icon}>
+                <Popup>
+                {vet["name"]} <br /> <button onClick={handle} className="btn-marker">VER MAS</button>
+                </Popup>
+            </Marker>       
+        </div>
     )
   }
   
-  return (
-    <>
-      <MapContainer center={centerPosition} zoom={13} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-  
-        {vets.map((vet) => <AddVet vet={vet}/>)}
-      </MapContainer>        
-    </>
-  )
+    return (
+        <>
+            <MapContainer center={centerPosition} zoom={13} scrollWheelZoom={false}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {vets.map((vet) => <AddVet vet={vet}/>)}
+            </MapContainer>        
+        </>
+    )
 }
 
 export default MapComponent

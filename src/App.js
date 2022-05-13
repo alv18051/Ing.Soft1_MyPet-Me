@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import React from "react";
+import { Route, Routes } from 'react-router-dom';
 
 import Main from "./pages/Main";
 import Emergency from "./pages/Emergency";
 import Login from "./pages/Login";
 import Popup from "./pages/Popup";
 import Search from "./pages/Search";
-import VetView from "./pages/Vetview";
 import Register from "./pages/Register"
 import HeaderComponent from "./pages/components/HeaderComponent";
 
