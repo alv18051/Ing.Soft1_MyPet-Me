@@ -37,14 +37,17 @@ const db = new Client({
 })
 db.connect();
 
-app.get("/start_search", (req, res) => {
+app.post("/start_searchs", (req, res) => {
     //console.log("\nPELICULAS Y SERIES")
     const sql = `
-        SELECT id, name FROM vet;
+        SELECT id, name FROM vet
+        WHERE name ILIKE '%${req.body.name}%'
+        AND emergency = ${req.body.emergency};;
         `
     //console.log(sql)
     db.query(sql, (err, row) => {
         console.log(row.rows)
+        console.log(req.body.name)
         res.json(row.rows)
     })
 })
