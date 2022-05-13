@@ -38,97 +38,76 @@ import InputComponent from './InputComponent';
 
 
  
- function Search({onCurrentPage}) {
+function Search({onCurrentPage}) {
 
-  const [posts, setPosts] = useState([]);
-  const [name, setName] = useState('');
+    const [posts, setPosts] = useState([]);
+    const [name, setName] = useState('');
 
-  
-  const [emergency, setEmergency] = useState(false);
-  
 
-  const getName = (name) => {
-    setName(name)
-  }
+    const [emergency, setEmergency] = useState(false);
 
-  useEffect(() => {
-    getDataName();
-  }, [])
 
-  const getData = (setPosts) => {
+    const getName = (name) => {
+        setName(name)
+    }
+
+    useEffect(() => {
+        getDataName();
+    }, [])
+
+    const getData = (setPosts) => {
     fetch('http://127.0.0.1:8000/start_search')
       .then(response => response.json())
       .then(data => {
-        setPosts(data)
+      setPosts(data)
       })
-  }
+    }
   
-
-  const getDataName= () => {
+    // const evitRender = event => {
+    //     event.preventDefault();
+    // }
+    
+    const getDataName= () => {
     fetch("http://127.0.0.1:8000/start_search", {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify({
-            name: name,
-            emergency: emergency
-        })
+      method: 'POST',
+      headers: {
+          'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+          name: name,
+          emergency: emergency
+      })
     })
     .then(response => response.json())
     .then(data => {
       setPosts(data)
     })
-  } 
+    } 
 
-  const getFilteredData= () => {
-    fetch("http://127.0.0.1:8000/apply_filters", {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify({
-            emergency: emergency
+    const getFilteredData= () => {
+        fetch("http://127.0.0.1:8000/apply_filters", {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                emergency: emergency
+            })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-      setPosts(data)
-    })
-  } 
-
-  
-
-
-
-
-
-
-  const [Cercania, setCercania] = useState('')
-  const [Emergencia, setEmergencia] = useState('')
-  const [Tarifas, setTarifas] = useState('')
-  const [Rating, setRating] = useState('')
-  const [Cantidad, setCantidad] = useState('')
-  const [nombre, setNombre] = useState('')
-
-  
-  
- 
-
-
-
-
-
-
+        .then(response => response.json())
+        .then(data => {
+        setPosts(data)
+        })
+    } 
 
     const target = event => {
-      //alert(`Cercania: ${Cercania} & Especialidad: ${Emergencia} & Tarifas: ${Tarifas} 
-      //& Rating: ${Rating} & Cantidad: ${Cantidad} `);
-      alert(`name: ${emergency}`)
-      event.preventDefault();
+        //alert(`Cercania: ${Cercania} & Especialidad: ${Emergencia} & Tarifas: ${Tarifas} 
+        //& Rating: ${Rating} & Cantidad: ${Cantidad} `);
+        alert(`name: ${emergency}`)
+        event.preventDefault();
     }
    
-     return (
+    return (
       <div className='SearchBackgorund'>
         <div className='SearchOuterContainer container'>
           <div className='SearchInfoContainer'>
@@ -167,9 +146,9 @@ import InputComponent from './InputComponent';
             <div className='SearchOuterContainer2'>
               <FormControl>
                 <label>Emergencia</label>
-                <Select placeholder='-Representa una emergencia' focusBorderColor={'rgb(174 213 142)'} onChange ={event => setEmergency(event.currentTarget.value)}>
-                    <option value='true'>{'Si'}</option>
-                    <option value='false'  >{'No'}</option>
+                <Select focusBorderColor={'rgb(174 213 142)'} onChange ={event => setEmergency(event.currentTarget.value)}>
+                    <option value='true' onClick={() => console.log("PRUEBA TRUE")}>{'Si'}</option>
+                    <option value='false' onClick={() => console.log("PRUEBA FALSE")}>{'No'}</option>
                   </Select>
               </FormControl>
             </div>
@@ -230,17 +209,10 @@ import InputComponent from './InputComponent';
             </div>
 
           
-          
-            <Button type='submit' 
-              backgroundColor='#ea9a64'
-              _hover='rgb(174 213 142)'
-              _active={{bg:'rgb(174 213 142)', borderColor:'rgb(174, 213, 142)'}}
-              color='#fff'
-              width='100%'
-              marginTop='10px'   
-            >Aplicar Filtros</Button>
-          
-
+            <button className='aply-changes'>
+                Eliminar filtros
+            </button>
+        
             </form>
           </div>
         </div>
@@ -278,13 +250,9 @@ import InputComponent from './InputComponent';
           </div>
 
         </div>
-
-
-
-
-      </div>
-     );
-   }
+        </div>
+    );
+}
    
- export default Search;
+export default Search;
    
