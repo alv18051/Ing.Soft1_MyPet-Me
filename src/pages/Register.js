@@ -36,7 +36,7 @@ const Register = () => {
         };
         gapi.load('client:auth2', start)
     });
-    var accessToken = gapi.auth.getToken().access_token;
+    //var accessToken = gapi.auth.getToken().access_token;
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
