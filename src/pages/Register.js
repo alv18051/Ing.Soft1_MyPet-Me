@@ -21,8 +21,8 @@ const Register = () => {
     }
     
     const loginHandleFail = (res) => {
-        console.log('Login Success:', res.profileObj);
         alert('Error inesperado')
+        console.log('Login failed:', res);
         setShowloginButton(false);
 
     }
