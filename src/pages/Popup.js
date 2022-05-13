@@ -22,25 +22,35 @@
  import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'  
  import { Divider } from '@chakra-ui/react'
 
- function Popup({onCurrentPage}) {
-     return (
+function Popup({ vet }) {
+
+    console.log("ID encontrado: " + vet["id"])
+    
+  return (
       <div>
-            <HeaderComponent className="header"/>
+        {/* <HeaderComponent className="header"/> */}
         
           <div class="body-a">
             <div class="vet-container">
-            <Avatar size="2xl" name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
+            <Avatar size="2xl" name='Dan Abrahmov' src='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg' />
             <div class="info">
-              <h1>veterinaria el Rejo</h1>
+              <h1>{vet["name"]}</h1>
+              <Divider orientation='horizontal' />
+              <h1>Correo: {vet["address"]}</h1>
+              <Divider orientation='horizontal' />
+              <h1>Número de telefono: {vet["phone"]}</h1>
+              <Divider orientation='horizontal' />
+              <h1>Dirección: {vet["direction"]}</h1>
+              {/* <h1>veterinaria el Rejo</h1>
               <Divider orientation='horizontal' />
               <h1>Hospital veterinario</h1>
               <Divider orientation='horizontal' />
               <h1>Número de telefono: 70321214</h1>
               <Divider orientation='horizontal' />
-              <h1>Dirección: 18 Av. 11-95 zona 15, Vista Hermosa III.</h1>
+              <h1>Dirección: 18 Av. 11-95 zona 15, Vista Hermosa III.</h1> */}
             </div>
             <button class="emBtn">Ir allí</button>
-            <Skeleton height='20px' />
+              <Skeleton height='20px' />
             </div>
           </div>
           <footer class="footer-section">
@@ -111,8 +121,8 @@
         </div>
     </footer>
       </div>
-     );
-   }
+  );
+}
    
  export default Popup;
    

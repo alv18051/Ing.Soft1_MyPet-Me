@@ -20,9 +20,9 @@
  import { Heading, Button, Input, FormControl, Select  } from '@chakra-ui/react';
  import '../styles/search.css'
 
-
+import Popup from './Popup';
  
- function Search({onCurrentPage}) {
+function Search({onCurrentPage}) {
   const [Cercania, setCercania] = useState('')
   const [Emergencia, setEmergencia] = useState('')
   const [Tarifas, setTarifas] = useState('')
@@ -212,14 +212,14 @@ const handleSubmit = event => {
           </div>
 
           <div className='CardsContainer'>
-            <CardComponent title='Veterinaria El Rejo'  link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='Veterinaria La Paz'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
+            {/* <CardComponent title='Veterinaria El Rejo'  link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg' id={2}/>
+            <CardComponent title='Veterinaria La Paz'  link='./Popup' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg' id = {4}/>
             <CardComponent title='CEMIVET'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
             <CardComponent title='VETINSA'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
             <CardComponent title='Veterinaria El Pastor'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
             <CardComponent title='Veterinaria La Bendicion'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
             <CardComponent title='Veterinaria El Cerro'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
-            <CardComponent title='DANA'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/>
+            <CardComponent title='DANA'  link='elpastor.html' image='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg'/> */}
           </div>
 
         </div>

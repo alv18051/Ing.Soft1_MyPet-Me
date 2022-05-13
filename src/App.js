@@ -16,13 +16,13 @@ function App() {
   // -> Por si no se selecciono una de las páginas anteriores ---------------------------
   return (
     <Routes>
-    <Route path='/' element={<> <Main/>  </>}></Route>
-    <Route path='/emergency' element={<> <HeaderComponent/> <Emergency/>  </>}></Route>
-    <Route path='/search' element={<> <HeaderComponent/> <Search/>  </>}></Route>
-    <Route path='/login' element={<> <Login/>  </>}></Route>
-    <Route path='/register' element={<>  <Register/>  </>}></Route>
-    <Route path='/Popup' element={<>  <Popup/>  </>}></Route>
-  </Routes>
+      <Route path='/' element={<> <Main/>  </>}></Route>
+      <Route path='/emergency' element={<> <HeaderComponent/> <Emergency/>  </>}></Route>
+      <Route path='/search' element={<> <HeaderComponent/> <Search/>  </>}></Route>
+      <Route path='/login' element={<> <Login/>  </>}></Route>
+      <Route path='/register' element={<>  <Register/>  </>}></Route>
+      <Route path='/Popup' element={<>  <Popup/>  </>}></Route>
+    </Routes>
   );
 }
 

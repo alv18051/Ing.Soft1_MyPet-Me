@@ -23,7 +23,7 @@ const MapComponent = ({ vets, setSelectedVet }) => {
       <div onClick={handle}>
         <Marker position={positions} icon={icon}>
           <Popup>
-            {vet["name"]}. <br /> <button onClick={handle}>VER MAS DETALLES</button>.
+            {vet["name"]} <br /> <button onClick={handle} className="btn-marker">VER MAS</button>
           </Popup>
         </Marker>       
       </div>
