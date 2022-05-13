@@ -2,11 +2,25 @@ import React, { useState } from 'react';
 import InputComponent from './InputComponent'
 import { Heading, Button} from '@chakra-ui/react';
 import './register.css';
-import Google from './Google-sign';
+import { GoogleLogout, GoogleLogin } from 'react-google-login';
+
+
+
+
+
 
 let user_type = 'vet';
 
 const Register = () => {
+
+    const cliente = ""
+    const [showloginButton, setShowloginButton] = useState(true);
+    
+    const loginHandle = (res) => {
+        console.log('Login Success:', res.profileObj);
+        setShowloginButton(false);
+
+    }
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -99,8 +113,16 @@ const Register = () => {
                             Aceptar
                     </Button>
                     </form>
+                    <p className='questionCont2'>or</p>
                     <div className='g-signin'>
-                        <Google/>
+                        <GoogleLogin
+                            clientId={cliente}
+                            buttonText="Sign In with Google"
+                            onSuccess={loginHandle}
+                            onFailure = {loginHandle}
+                            cookiePolicy={'single_host_origin'}
+                            isSignedIn={true}
+                        />
 
                     </div>
 
