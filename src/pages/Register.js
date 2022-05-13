@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputComponent from './InputComponent'
 import { Heading, Button} from '@chakra-ui/react';
 import './register.css';
 import { GoogleLogout, GoogleLogin } from 'react-google-login';
-
-
-
-
+import { gapi } from 'gapi-script'
 
 
 let user_type = 'vet';
@@ -16,11 +13,30 @@ const Register = () => {
     const cliente = ""
     const [showloginButton, setShowloginButton] = useState(true);
     
-    const loginHandle = (res) => {
+    const loginHandleSuccess = (res) => {
         console.log('Login Success:', res.profileObj);
+        alert('Se ha ingresado con Google')
         setShowloginButton(false);
 
     }
+    
+    const loginHandleFail = (res) => {
+        console.log('Login Success:', res.profileObj);
+        alert('Error inesperado')
+        setShowloginButton(false);
+
+    }
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                cliente: cliente,
+                scope: ""
+            })
+        };
+        gapi.load('client:auth2', start)
+    });
+    var accessToken = gapi.auth.getToken().access_token;
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -118,8 +134,8 @@ const Register = () => {
                         <GoogleLogin
                             clientId={cliente}
                             buttonText="Sign In with Google"
-                            onSuccess={loginHandle}
-                            onFailure = {loginHandle}
+                            onSuccess={loginHandleSuccess}
+                            onFailure = {loginHandleFail}
                             cookiePolicy={'single_host_origin'}
                             isSignedIn={true}
                         />

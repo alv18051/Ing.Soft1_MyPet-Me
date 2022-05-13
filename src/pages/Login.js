@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import InputComponent from './InputComponent'
 import { Heading, Button} from '@chakra-ui/react';
 import './register.css'
+import { GoogleLogout, GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script'
 
 
 const Login = () => {

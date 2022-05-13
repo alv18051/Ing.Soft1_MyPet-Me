@@ -17,6 +17,7 @@
  import React from "react";
  import './landingPage.css';
  import HeaderComponent from "./HeaderComponent";
+ import { gapi } from 'gapi-script'
  
  function Main() {
        
