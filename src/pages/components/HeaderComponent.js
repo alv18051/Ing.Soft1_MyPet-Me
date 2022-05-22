@@ -15,36 +15,35 @@
  #######################################################################################*/
 
 // import '../styles/index.css'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom'
 
- function HeaderComponent({setCurrentPage}) {
+function HeaderComponent({ setCurrentPage }) {
+    return (
+        <>
+            <nav className="header">
+                <Link to={'/'}>
+                    {' '}
+                    <h1 className="logo">
+                        <b>My Pet&Me</b>
+                    </h1>{' '}
+                </Link>
 
-     return (
+                <ul className="header-right">
+                    <li className="option active btn">
+                        <Link to={'/emergency'}>Emergencia</Link>
+                    </li>
 
-      <>
-      <nav className="header">
-         <Link to={"/"}> <h1 className="logo"><b>My Pet&Me</b></h1> </Link>
+                    <li className="option btn">
+                        <Link to={'/search'}>Búsqueda</Link>
+                    </li>
 
-         <ul className="header-right">  
-         <li className="option active btn">
-            <Link to={"/emergency"}>Emergencia</Link>
-           </li>   
+                    <li className="option btn">
+                        <Link to={'/login'}>Iniciar sesión</Link>
+                    </li>
+                </ul>
+            </nav>
+        </>
+    )
+}
 
-        <li className="option btn">
-            <Link to={"/search"}>Búsqueda</Link>
-        </li>
-
-        <li className="option btn">
-            <Link to={"/login"}>Iniciar sesión</Link>
-        </li>
-
-         </ul>
-       </nav>
-       
-         </>
-
-     );
-   }
-   
- export default HeaderComponent;
-   
+export default HeaderComponent

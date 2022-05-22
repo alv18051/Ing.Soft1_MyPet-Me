@@ -14,30 +14,34 @@
  * Javier Alvarez
  #######################################################################################*/
 
- import React from "react";
- import '../styles/popup.css';
- import { Avatar } from '@chakra-ui/react'
- import { Skeleton } from '@chakra-ui/react'  
- import { Divider } from '@chakra-ui/react'
+import React from 'react'
+import '../styles/popup.css'
+import { Avatar } from '@chakra-ui/react'
+import { Skeleton } from '@chakra-ui/react'
+import { Divider } from '@chakra-ui/react'
 
-function Popup({ vet, regretOriginal }) {    
+function Popup({ vet, regretOriginal }) {
     return (
         <div>
-            <button onClick={() => regretOriginal(false)}>REGRESAR</button>        
+            <button onClick={() => regretOriginal(false)}>REGRESAR</button>
             <div class="body-a">
                 <div class="vet-container">
-                    <Avatar size="2xl" name='Dan Abrahmov' src='https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg' />
+                    <Avatar
+                        size="2xl"
+                        name="Dan Abrahmov"
+                        src="https://pbs.twimg.com/media/EWH0kEZWsAAWwvI.jpg"
+                    />
                     <div class="info">
-                        <h1>{vet["name"]}</h1>
-                        <Divider orientation='horizontal' />
-                        <h1>Correo: {vet["address"]}</h1>
-                        <Divider orientation='horizontal' />
-                        <h1>Número de telefono: {vet["phone"]}</h1>
-                        <Divider orientation='horizontal' />
-                        <h1>Dirección: {vet["direction"]}</h1>
+                        <h1>{vet['name']}</h1>
+                        <Divider orientation="horizontal" />
+                        <h1>Correo: {vet['address']}</h1>
+                        <Divider orientation="horizontal" />
+                        <h1>Número de telefono: {vet['phone']}</h1>
+                        <Divider orientation="horizontal" />
+                        <h1>Dirección: {vet['direction']}</h1>
                     </div>
                     <button class="emBtn">Ir allí</button>
-                    <Skeleton height='20px' />
+                    <Skeleton height="20px" />
                 </div>
             </div>
             <footer class="footer-section">
@@ -77,13 +81,10 @@ function Popup({ vet, regretOriginal }) {
                         <div class="row">
                             <div class="col-xl-4 col-lg-4 mb-50">
                                 <div class="footer-widget">
-                                    <div class="footer-logo">
-                                    </div>
+                                    <div class="footer-logo"></div>
 
                                     <div class="subscribe-form">
-                                        <form action="#">
-
-                                        </form>
+                                        <form action="#"></form>
                                     </div>
                                 </div>
                             </div>
@@ -93,14 +94,10 @@ function Popup({ vet, regretOriginal }) {
                 <div class="copyright-area">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-
-                            </div>
+                            <div class="col-xl-6 col-lg-6 text-center text-lg-left"></div>
                             <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                                 <div class="footer-menu">
-                                    <ul>
-
-                                    </ul>
+                                    <ul></ul>
                                 </div>
                             </div>
                         </div>
@@ -108,8 +105,7 @@ function Popup({ vet, regretOriginal }) {
                 </div>
             </footer>
         </div>
-    );
+    )
 }
-   
-export default Popup;
-   
+
+export default Popup
