@@ -52,17 +52,24 @@ app.post('/start_search', (req, res) => {
 
 app.post('/apply_changues', (req, res) => {
     let sql = `
-        SELECT * FROM vet
-        WHERE emergency = ${req.body.emergency};
+        SELECT * FROM vet v
     `
-    console.log('VERIFICAR: ' + req.body.vet_type)
-    if (req.body.vet_type !== 'Nada') {
-        sql = `
-            SELECT * FROM vet
-            WHERE emergency = ${req.body.emergency}
-            AND vet_type = '${req.body.vet_type}';
+    if (req.body.selected_service !== '') {
+        console.log('Seleccionar Servicios')
+        sql += `
+            INNER JOIN vet_services vs ON v.id = vs.vet_id
+            INNER JOIN services s ON s.id = vs.service_id             
         `
     }
+    sql += `WHERE emergency = ${req.body.emergency}`
+    if (req.body.selected_service !== '') {
+        sql += `\nAND s.name = '${req.body.selected_service}'`
+    }
+    if (req.body.vet_type !== 'Nada') {
+        sql += `\nAND vet_type = '${req.body.vet_type}'`
+    }
+    sql += `;`
+    console.log('VET: ' + sql)
 
     db.query(sql, (err, row) => {
         res.json(row.rows)
@@ -180,11 +187,12 @@ app.post('/verify_vet', (req, res) => {
 app.get('/get_vets', (req, res) => {
     console.log('Obtener todos los veterinarios')
 
-    const sql = 'SELECT * FROM vet v INNER JOIN location l ON v.id = l.id;'
+    const sql = 'SELECT * FROM vet v INNER JOIN location l ON v.id = l.vet_id;'
     db.query(sql, (err, row) => {
         row
             ? res.json({ success: true, data: row.rows })
             : res.json({ success: false, data: err })
+        console.log(row + ' - ' + err)
     })
 })
 

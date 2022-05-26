@@ -68,7 +68,7 @@ function Search() {
             })
     }
 
-    const updateData = (the_emergency, the_vet) => {
+    const updateData = (the_emergency, the_vet, selected_service) => {
         fetch('http://127.0.0.1:8000/apply_changues', {
             method: 'POST',
             headers: {
@@ -77,6 +77,7 @@ function Search() {
             body: JSON.stringify({
                 emergency: the_emergency,
                 vet_type: the_vet,
+                selected_service: selected_service,
             }),
         })
             .then((response) => response.json())
@@ -92,6 +93,7 @@ function Search() {
             this.state = {
                 emerg: true,
                 kind: 'Nada',
+                services: '',
             }
             this.handleChange = this.handleChange.bind(this)
             this.applyFilters = this.applyFilters.bind(this)
@@ -102,7 +104,7 @@ function Search() {
         }
 
         applyFilters(event) {
-            updateData(this.state.emerg, this.state.kind)
+            updateData(this.state.emerg, this.state.kind, this.state.services)
         }
 
         render() {
@@ -191,7 +193,7 @@ function Search() {
 
                         <div className="SearchOuterContainer2">
                             <FormControl>
-                                <label>Tarifas</label>
+                                <label>Horarios</label>
                                 <RangeSlider
                                     aria-label={['min', 'max']}
                                     defaultValue={[0, 10]}
@@ -242,66 +244,6 @@ function Search() {
 
                         <div className="SearchOuterContainer2">
                             <FormControl>
-                                <label>Cant. de veterinarios</label>
-                                <Slider
-                                    min={0}
-                                    max={50}
-                                    defaultValue={[0]}
-                                    step={10}
-                                    onChangeEnd={(val) => console.log(val)}
-                                >
-                                    <SliderMark
-                                        value={12}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        1
-                                    </SliderMark>
-                                    <SliderMark
-                                        value={20}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        1-2
-                                    </SliderMark>
-                                    <SliderMark
-                                        value={30}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        2-4
-                                    </SliderMark>
-                                    <SliderMark
-                                        value={40}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        5-7
-                                    </SliderMark>
-                                    <SliderMark
-                                        value={50}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        7+
-                                    </SliderMark>
-
-                                    <SliderTrack>
-                                        <Box position="relative" right={10} />
-                                        <SliderFilledTrack bg="orange" />
-                                    </SliderTrack>
-                                    <SliderThumb />
-                                </Slider>
-                            </FormControl>
-                        </div>
-
-                        <div className="SearchOuterContainer2">
-                            <FormControl>
                                 <label>Tipo Veterinaria</label>
                                 <Select
                                     focusBorderColor={'rgb(174 213 142)'}
@@ -315,6 +257,42 @@ function Search() {
                                     <option value="Clinica">{'Clinica'}</option>
                                     <option value="Hospital">
                                         {'Hospital'}
+                                    </option>
+                                </Select>
+                            </FormControl>
+                        </div>
+
+                        <div className="SearchOuterContainer2">
+                            <FormControl>
+                                <label>Servicios</label>
+                                <Select
+                                    focusBorderColor={'rgb(174 213 142)'}
+                                    value={this.state.services}
+                                    onChange={this.handleChange}
+                                    name="services"
+                                >
+                                    <option value="">{'Cualquiera'}</option>
+                                    <option value="Rayos X">{'Rayos X'}</option>
+                                    <option value="Hospedaje">
+                                        {'Hospedaje'}
+                                    </option>
+                                    <option value="Groominge">
+                                        {'Groominge'}
+                                    </option>
+                                    <option value="Vacunacion">
+                                        {'Vacunacion'}
+                                    </option>
+                                    <option value="Desparacitacion">
+                                        {'Desparacitacion'}
+                                    </option>
+                                    <option value="Castraciones">
+                                        {'Castraciones'}
+                                    </option>
+                                    <option value="Operacion">
+                                        {'Operacion'}
+                                    </option>
+                                    <option value="Emergencias">
+                                        {'Emergencias'}
                                     </option>
                                 </Select>
                             </FormControl>
