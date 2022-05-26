@@ -113,57 +113,6 @@ function Search() {
                     <form>
                         <div className="SearchOuterContainer2">
                             <FormControl>
-                                <label>Cercania</label>
-                                <Slider
-                                    min={0}
-                                    max={45}
-                                    defaultValue={0}
-                                    step={15}
-                                    onChangeEnd={(val) => console.log(val)}
-                                >
-                                    <SliderMark
-                                        value={1}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        1 km
-                                    </SliderMark>
-                                    <SliderMark
-                                        value={15}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        2 km
-                                    </SliderMark>
-                                    <SliderMark
-                                        value={30}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        4 km
-                                    </SliderMark>
-                                    <SliderMark
-                                        value={45}
-                                        mt="1"
-                                        ml="-2.5"
-                                        fontSize="smaller"
-                                    >
-                                        5+ km
-                                    </SliderMark>
-                                    <SliderTrack>
-                                        <Box position="relative" right={10} />
-                                        <SliderFilledTrack bg="orange" />
-                                    </SliderTrack>
-                                    <SliderThumb />
-                                </Slider>
-                            </FormControl>
-                        </div>
-
-                        <div className="SearchOuterContainer2">
-                            <FormControl>
                                 <label>Emergencia</label>
                                 <Select
                                     focusBorderColor={'rgb(174 213 142)'}
